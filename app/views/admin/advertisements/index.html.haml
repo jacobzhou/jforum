@@ -1,0 +1,11 @@
+.box
+  .inner
+    .fr
+      = admin_create_button('添加新广告', :advertisement)
+    = build_admin_navigation([@title])
+
+.row
+  = render @ads, :today => Time.zone.today
+
+= paginate @ads
+

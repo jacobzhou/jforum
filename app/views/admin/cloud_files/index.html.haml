@@ -1,0 +1,18 @@
+.box
+  .cell
+    .fr
+      = admin_create_button('上传文件', :cloud_file)
+    = build_admin_navigation([@title])
+  .cell
+    %table.table
+      %thead
+        %tr
+          %th 简要描述
+          %th 访问路径
+          %th 大小
+          %th 文件类型
+          %th 操作
+      %tbody
+        = render @files
+  .inner
+    = paginate @files

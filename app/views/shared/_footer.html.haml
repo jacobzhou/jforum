@@ -1,0 +1,21 @@
+#footer
+  .container#footer-main
+    %ul.page-links
+      = render :partial => 'pages/nav', :collection => Page.only_published.default_order, :spacer_template => 'pages/nav_ruler'
+    .copywrite
+      = Siteconf.footer.html_safe
+    %small.muted
+      Powered by
+      = link_to 'Rabel', 'http://rabelapp.com', :target => '_blank', :class => :muted
+      = Jforum.version
+
+= render 'shared/google_analytics'
+
+:javascript
+  window.rabel.search_engine_url = "#{search_engine_url}";
+  jQuery(function($) {
+    #{yield :template_js}
+  });
+
+:javascript
+  #{Siteconf.custom_js.html_safe}

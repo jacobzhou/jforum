@@ -1,0 +1,7 @@
+.box
+  .cell
+    = build_navigation([@title])
+  .cell
+    = render :partial => 'topics/profile_topic', :collection => @topics, :as => :topic, :locals => {:topic_user => @user}
+  = paginate @topics if @topics.any?
+
