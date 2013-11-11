@@ -5,6 +5,7 @@
   = render 'shared/fileupload_widget', :textarea_selector => "textarea#topic_content"
   = render 'shared/preview_widget', :ref => :topic_content, :type => :topic
   = f.input :content, :input_html => {:rows => 10, :style => 'width: 98%;'}, :label => false, :placeholder => '话题内容'
+  = text_field_tag "file", params[:file], :accept => "image/*;capture=camera"
   - if current_user.can_manage_site?
     = f.input :sticky, :inline_label => '保持置顶', :label => false
     = f.input :comments_closed, :inline_label => '禁止回复', :label => false

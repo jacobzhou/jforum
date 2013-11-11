@@ -14,3 +14,4 @@
 
 Jforum 论坛系统受到[Project Babel 2](https://github.com/livid/v2ex)启发，特此感谢。
 
+<div class="hero-unit"><h1>我是营养师</h1><p>让健康很容易，让中国人更健康。</p></div>
