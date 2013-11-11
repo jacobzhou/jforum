@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121204032057) do
+ActiveRecord::Schema.define(:version => 20131111124655) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -137,6 +137,16 @@ ActiveRecord::Schema.define(:version => 20121204032057) do
   add_index "pages", ["key"], :name => "index_pages_on_key"
   add_index "pages", ["position"], :name => "index_pages_on_position"
   add_index "pages", ["published"], :name => "index_pages_on_published"
+
+  create_table "photos", :force => true do |t|
+    t.text     "description"
+    t.string   "file"
+    t.integer  "photoable_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "photos", ["photoable_id"], :name => "index_photos_on_photoable_id"
 
   create_table "planes", :force => true do |t|
     t.string   "name"

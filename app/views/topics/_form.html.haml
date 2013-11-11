@@ -1,11 +1,15 @@
-.alert.alert-info 如果标题已经包含你想说的话，内容可以留空。
+.alert.alert-info 如标题已经包含你想说的话，内容可以留空。
 = simple_form_for [node, topic], :html => {:class => 'form-vertical'} do |f|
   %a{:name => 'new_topic'}/
   = f.input :title, :label => '标题', :input_html => {:maxlength => 150, :class => :span6}
   = render 'shared/fileupload_widget', :textarea_selector => "textarea#topic_content"
   = render 'shared/preview_widget', :ref => :topic_content, :type => :topic
   = f.input :content, :input_html => {:rows => 10, :style => 'width: 98%;'}, :label => false, :placeholder => '话题内容'
-  = file_field_tag "file", params[:file], :accept => "image/*;capture=camera"
+  = @topic.photos.size
+  = f.fields_for :photos do |attachment_form| 
+    %p
+      = attachment_form.file_field :file
+      = attachment_form.link_to_remove "删除"
   - if current_user.can_manage_site?
     = f.input :sticky, :inline_label => '保持置顶', :label => false
     = f.input :comments_closed, :inline_label => '禁止回复', :label => false
