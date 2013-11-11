@@ -19,7 +19,7 @@
           &nbsp;
           = mini_avatar(current_user)
     .inner
-      = f.input :avatar, :label => '选择图片文件'
+      = f.input :avatar, :label => '选择图片文件', :accept => "image/*;capture=camera"
       .form-actions
         = f.submit '上传新头像', :class => 'btn btn-small btn-primary'
         %span.help-block 推荐使用正方形的透明 PNG 图片以获得最佳效果。

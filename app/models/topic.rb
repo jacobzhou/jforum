@@ -15,13 +15,9 @@ class Topic < ActiveRecord::Base
   has_many :bookmarks, :as => :bookmarkable, :dependent => :destroy
   has_many :notifications, :as => :notifiable, :dependent => :destroy
 
-
   attr_accessible :photos_attributes
-
   has_many :photos, :as => :photoable
-
   accepts_nested_attributes_for :photos
-
 
   validates :node_id, :user_id, :title, :presence => true
 
