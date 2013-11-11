@@ -64,6 +64,8 @@ class TopicsController < ApplicationController
     @prev_topic = @topic.prev_topic(@node)
     @next_topic = @topic.next_topic(@node)
 
+    1.times{ @topic.photos.build }
+   
     respond_to do |format|
       format.html
       format.mobile
@@ -72,7 +74,7 @@ class TopicsController < ApplicationController
 
   def new
     @topic = @node.topics.new
-    3.times{ @topic.photos.build }
+    1.times{ @topic.photos.build }
     respond_to do |format|
       format.html
       format.mobile
