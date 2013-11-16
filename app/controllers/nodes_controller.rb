@@ -16,7 +16,8 @@ class NodesController < ApplicationController
     @next_page_num = (@page_num < @total_pages) ? @page_num + 1 : 0
     @prev_page_num = (@page_num > 1) ? @page_num - 1 : 0
     @topics = @node.cached_assoc_pagination(:topics, @page_num, Siteconf.pagination_topics.to_i, 'updated_at')
-
+    @topic = @node.topics.new
+    1.times{ @topic.photos.build }
     @canonical_path = "/go/#{params[:key]}"
     @canonical_path += "?p=#{@page_num}" if @page_num > 1
     @seo_description = "#{@node.name} - #{@node.introduction}"

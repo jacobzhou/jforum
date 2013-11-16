@@ -14,15 +14,13 @@ class Topic < ActiveRecord::Base
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :bookmarks, :as => :bookmarkable, :dependent => :destroy
   has_many :notifications, :as => :notifiable, :dependent => :destroy
-
-  attr_accessible :photos_attributes
   has_many :photos, :as => :photoable
-  accepts_nested_attributes_for :photos
+  accepts_nested_attributes_for :photos, :reject_if => lambda { |item| item[:file].blank? }, :allow_destroy => true
 
   validates :node_id, :user_id, :title, :presence => true
 
-  attr_accessible :title, :content
-  attr_accessible :title, :content, :comments_closed, :sticky, :as => :admin
+  attr_accessible :title, :content, :photos_attributes
+  attr_accessible :title, :content, :comments_closed, :photos_attributes, :sticky, :as => :admin
 
   after_create :send_notifications
 

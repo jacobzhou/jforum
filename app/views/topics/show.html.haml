@@ -35,7 +35,10 @@
         次浏览
       .clearfix
     .inner
-      .content.topic_content= format_topic(@topic.content)
+      .content.topic_content
+        - @topic.photos.each do |photo|
+          = image_tag(photo.file_url) if photo.file?
+        = format_topic(@topic.content)
       - if user_signed_in?
         .pull-right
           - if current_user.bookmarked?(@topic)

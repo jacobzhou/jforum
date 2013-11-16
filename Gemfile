@@ -7,7 +7,7 @@ gem 'rails', '3.2.14'
 
 gem 'rename'
 gem 'nested_form'
-
+gem 'pry-rails', :group => :development
 
 # gem 'pg'
 gem 'mysql2', '0.3.11'

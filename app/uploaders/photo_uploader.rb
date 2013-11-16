@@ -5,6 +5,9 @@ class PhotoUploader < CarrierWave::Uploader::Base
   include PictureExtensionWhiteList
   include CarrierWave::MimeTypes
   include CarrierWave::RMagick
+
+  process :set_content_type
+
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
@@ -40,7 +43,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
    version :thumb do
-     process :scale => [240, nil]
+     process :resize_to_fit => [240, nil]
    end
 
   # Add a white list of extensions which are allowed to be uploaded.
