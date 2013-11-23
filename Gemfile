@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://ruby.taobao.org'
 
 gem 'rails', '3.2.14'
 
@@ -71,7 +71,7 @@ gem 'carrierwave-upyun', '~> 0.1.6'
 gem 'rmagick', '2.13.2'
 gem 'redcarpet', '2.3.0'
 gem 'coderay', '1.0.9'
-gem 'kgio'
+# gem 'kgio'
 gem 'dalli', '2.6.3'
 gem 'acts_as_list', '0.2.0'
 gem 'rails-settings-cached', '= 0.2.1'
@@ -82,6 +82,6 @@ gem 'slim-rails', '~> 1.0.3'
 gem 'simple_form', '~> 2.0.4'
 gem 'foreman', '~> 0.61.0'
 gem 'thin', '~> 1.5.0'
-gem 'figaro', '0.6.4'
+# gem 'figaro', '0.6.4'
 
 

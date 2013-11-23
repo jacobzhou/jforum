@@ -6,6 +6,8 @@ class Admin::BaseController < ApplicationController
     raise CanCan::AccessDenied unless current_user.can_manage_site?
   end
 
+  respond_to :html, :json, :js
+
   before_filter do |c|
     add_title_item '管理后台'
   end

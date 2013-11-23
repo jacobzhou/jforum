@@ -43,6 +43,8 @@ Jforum::Application.routes.draw do
   end
 
   namespace :admin do
+    resources :surveys
+
     resources :planes do
       resources :nodes
       post :sort, :on => :collection

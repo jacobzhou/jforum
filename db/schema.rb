@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131111124655) do
+ActiveRecord::Schema.define(:version => 20131116130530) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -177,6 +177,48 @@ ActiveRecord::Schema.define(:version => 20131111124655) do
   end
 
   add_index "settings", ["thing_type", "thing_id", "var"], :name => "index_settings_on_thing_type_and_thing_id_and_var", :unique => true
+
+  create_table "survery_questions", :force => true do |t|
+    t.string   "title"
+    t.integer  "survery_id"
+    t.string   "qtype"
+    t.string   "options"
+    t.string   "answers"
+    t.float    "score"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "survery_questions", ["survery_id"], :name => "index_survery_questions_on_survery_id"
+
+  create_table "survery_user_answers", :force => true do |t|
+    t.integer  "survery_user_sheet_id"
+    t.float    "score"
+    t.string   "answers"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "survery_user_answers", ["survery_user_sheet_id"], :name => "index_survery_user_answers_on_survery_user_sheet_id"
+
+  create_table "survery_user_sheets", :force => true do |t|
+    t.integer  "survery_id"
+    t.float    "score"
+    t.string   "desc"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "survery_user_sheets", ["survery_id"], :name => "index_survery_user_sheets_on_survery_id"
+  add_index "survery_user_sheets", ["user_id"], :name => "index_survery_user_sheets_on_user_id"
+
+  create_table "surveys", :force => true do |t|
+    t.string   "name"
+    t.string   "desc"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "topics", :force => true do |t|
     t.integer  "node_id"

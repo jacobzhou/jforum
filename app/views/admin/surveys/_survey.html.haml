@@ -1,0 +1,7 @@
+%tr.highlight
+  %td{:align => :right}= survey.id
+  %td.auto{:align => :left}
+    = survey.name
+  %td.center
+    = link_to '修改健康问卷', edit_admin_survey_path(survey), :class => 'btn btn-small'
+    = link_to '编辑问题', edit_admin_survey_path(survey), :class => 'btn btn-small btn-primary'
