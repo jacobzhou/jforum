@@ -1,6 +1,6 @@
 $(function(){
 	$(".add_nested_fields").on('click', function(){
-		setTimeout("add_index_to_fields()",500);
+		setTimeout("add_index_to_fields()", 300);
 	});
 });
 
@@ -10,7 +10,7 @@ function add_index_to_fields(){
   	$(e).find('label:first').html(index+"、标题"); 
 	});
 	$(".remove_nested_fields").on('click', function(){
-		setTimeout("add_index_to_fields()",500);
+		setTimeout("add_index_to_fields()", 300);
 	});
 }
 
