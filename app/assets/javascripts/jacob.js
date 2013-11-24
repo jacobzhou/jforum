@@ -1,8 +1,8 @@
 $(function(){
-	$(".add_nested_fields").click(function(){
+	$(".add_nested_fields").on('click', function(){
 		setTimeout("add_index_to_fields()",500);
 	});
-	$(".remove_nested_fields").click(function(){
+	$(".remove_nested_fields").on('click', function(){
 		setTimeout("add_index_to_fields()",500);
 	});
 });
