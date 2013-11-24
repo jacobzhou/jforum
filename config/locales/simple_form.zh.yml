@@ -11,9 +11,17 @@ zh:
     error_notification:
       default_message: "Please review the problems below:"
     # Labels and hints examples
-    # labels:
-    #   defaults:
-    #     password: 'Password'
+    labels:
+      defaults:
+        title: '标题'
+        qtype: '类型'
+        options: '选项'
+        answers: '答案'
+        score: '分数'
+    hints:
+      defaults: 
+        options: '单选多选选项用空格隔开（如：经常 偶尔 从不）; 文本不用填'
+        answers: '同上'
     #   user:
     #     new:
     #       email: 'E-mail to sign in.'
