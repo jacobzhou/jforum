@@ -15,6 +15,25 @@ module ApplicationHelper
     @title_items.join(' - ')
   end
 
+  def link_to_blank(*args, &block)
+    if block_given?
+      args = [(args.first || {}), (args.second || {}).merge(:target => '_blank')]
+    else
+      args = [(args.first || {}), (args.second || {}), (args.third || {}).merge(:target => '_blank')]
+    end
+    link_to(*args, block)
+  end
+
+  def survey_question_html(survey_question)
+    case survey_question.qtype
+    when '标题'
+      "<h4>#{survey_question.title}</h4>".html_safe
+    when '文本'
+      text_field_tag "#{survey_question}"
+    end
+  end
+
+
   def add_title_item(item)
     @title_items.unshift item unless request.format.to_sym == :js
   end

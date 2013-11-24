@@ -9,4 +9,6 @@ class SurveyQuestion < ActiveRecord::Base
   belongs_to :survey
 
   has_ancestry
+
+  default_scope "position DESC"
 end

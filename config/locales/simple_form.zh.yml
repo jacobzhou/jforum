@@ -20,12 +20,14 @@ zh:
         score: '分数'
         suf_words: '文字后缀'
         parent_id: '父标题'
+        default: '排序'
     hints:
       defaults: 
         options: '单选多选选项用空格隔开（如：经常 偶尔 从不）; 其他不用填'
         answers: '同上'
         qtype: '单选和多选需要填写选项；图片将上传附件；标题将可以形成树形结构'
         suf_words: '标题+类型框+后缀'
+        default: '越大越靠前'
     #   user:
     #     new:
     #       email: 'E-mail to sign in.'
