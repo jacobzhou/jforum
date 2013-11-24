@@ -11,6 +11,7 @@ gem 'pry-rails', :group => :development
 
 # gem 'pg'
 gem 'mysql2', '0.3.11'
+gem 'ancestry'
 
 # Gems used only for assets and not required
 # in production environments by default.

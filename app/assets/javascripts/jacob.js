@@ -2,6 +2,9 @@ $(function(){
 	$(".add_nested_fields").on('click', function(){
 		setTimeout("add_index_to_fields()", 300);
 	});
+
+	$(".survey_qtype").on('change', 'select', function(){
+	});
 });
 
 function add_index_to_fields(){
@@ -13,4 +16,5 @@ function add_index_to_fields(){
 		setTimeout("add_index_to_fields()", 300);
 	});
 }
+
 

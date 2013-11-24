@@ -6,4 +6,6 @@ class SurveyQuestion < ActiveRecord::Base
   validates :score, :presence => true, :numericality => true
 
   belongs_to :survey
+
+  has_ancestry
 end

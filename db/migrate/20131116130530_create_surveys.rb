@@ -14,6 +14,7 @@ class CreateSurveys < ActiveRecord::Migration
       t.string :answers
       t.float :score
       t.string :suf_words
+      t.string :ancestry
       t.timestamps
     end
 
