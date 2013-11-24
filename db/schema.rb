@@ -142,8 +142,9 @@ ActiveRecord::Schema.define(:version => 20131116130530) do
     t.text     "description"
     t.string   "file"
     t.integer  "photoable_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.string   "photoable_type"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   add_index "photos", ["photoable_id"], :name => "index_photos_on_photoable_id"
@@ -178,9 +179,9 @@ ActiveRecord::Schema.define(:version => 20131116130530) do
 
   add_index "settings", ["thing_type", "thing_id", "var"], :name => "index_settings_on_thing_type_and_thing_id_and_var", :unique => true
 
-  create_table "survery_questions", :force => true do |t|
+  create_table "survey_questions", :force => true do |t|
     t.string   "title"
-    t.integer  "survery_id"
+    t.integer  "survey_id"
     t.string   "qtype"
     t.string   "options"
     t.string   "answers"
@@ -189,20 +190,20 @@ ActiveRecord::Schema.define(:version => 20131116130530) do
     t.datetime "updated_at", :null => false
   end
 
-  add_index "survery_questions", ["survery_id"], :name => "index_survery_questions_on_survery_id"
+  add_index "survey_questions", ["survey_id"], :name => "index_survey_questions_on_survey_id"
 
-  create_table "survery_user_answers", :force => true do |t|
-    t.integer  "survery_user_sheet_id"
+  create_table "survey_user_answers", :force => true do |t|
+    t.integer  "survey_user_sheet_id"
     t.float    "score"
     t.string   "answers"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
   end
 
-  add_index "survery_user_answers", ["survery_user_sheet_id"], :name => "index_survery_user_answers_on_survery_user_sheet_id"
+  add_index "survey_user_answers", ["survey_user_sheet_id"], :name => "index_survey_user_answers_on_survey_user_sheet_id"
 
-  create_table "survery_user_sheets", :force => true do |t|
-    t.integer  "survery_id"
+  create_table "survey_user_sheets", :force => true do |t|
+    t.integer  "survey_id"
     t.float    "score"
     t.string   "desc"
     t.integer  "user_id"
@@ -210,8 +211,8 @@ ActiveRecord::Schema.define(:version => 20131116130530) do
     t.datetime "updated_at", :null => false
   end
 
-  add_index "survery_user_sheets", ["survery_id"], :name => "index_survery_user_sheets_on_survery_id"
-  add_index "survery_user_sheets", ["user_id"], :name => "index_survery_user_sheets_on_user_id"
+  add_index "survey_user_sheets", ["survey_id"], :name => "index_survey_user_sheets_on_survey_id"
+  add_index "survey_user_sheets", ["user_id"], :name => "index_survey_user_sheets_on_user_id"
 
   create_table "surveys", :force => true do |t|
     t.string   "name"

@@ -10,4 +10,4 @@
 //= require jquery_at_caret
 //= require jquery_smooth_scroll
 //= require rabel
-//= require jquery_nested_form
+// require jquery_nested_form
