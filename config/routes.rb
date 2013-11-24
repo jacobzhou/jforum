@@ -45,7 +45,7 @@ Jforum::Application.routes.draw do
   namespace :admin do
     resources :surveys do
       member do
-        edit_survey_questions
+        get :edit_survey_questions
       end
     end
 
