@@ -8,12 +8,12 @@
       = f.simple_fields_for :survey_questions do |nest_form| 
         %p
           = nest_form.input :title
-          = nest_form.input :qtype, :collection => ["单选", "多选", "文本"], :include_blank => false
+          = nest_form.input :qtype, :collection => ["单选", "多选", "文本", "日期", "图片"], :include_blank => false
           = nest_form.input :options
           = nest_form.input :answers
-          = nest_form.input :score
+          = nest_form.input :suf_words
           = nest_form.link_to_remove "删除", :class => "btn btn-small btn-warning ml180"
-      = f.link_to_add "添加问题", :survey_questions, :class => "btn"
+      = f.link_to_add "添加问题", :survey_questions, :class => "btn ml180"
       .form-actions
         = f.submit '保存', :class => 'btn btn-small btn-primary'
 :javascript
