@@ -38,4 +38,4 @@ Jforum::Application.configure do
   config.active_record.auto_explain_threshold_in_seconds = 0.5
 end
 
-BetterErrors::Middleware.allow_ip!
+BetterErrors::Middleware.allow_ip! ENV['TRUSTED_IP'] if ENV['TRUSTED_IP']
