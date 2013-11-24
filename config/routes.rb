@@ -19,6 +19,8 @@ Jforum::Application.routes.draw do
   get 'captcha' => 'welcome#captcha'
   get 'sitemap' => 'welcome#sitemap'
 
+  resources :surveys, :only => [:show]
+
   resources :nodes do
     resources :topics do
       member do
