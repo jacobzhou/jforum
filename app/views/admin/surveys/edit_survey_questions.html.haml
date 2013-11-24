@@ -16,3 +16,7 @@
       = f.link_to_add "添加问题", :survey_questions, :class => "btn"
       .form-actions
         = f.submit '保存', :class => 'btn btn-small btn-primary'
+:javascript
+  $(document).ready( function() {
+    add_index_to_fields()；
+  });
