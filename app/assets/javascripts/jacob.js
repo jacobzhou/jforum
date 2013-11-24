@@ -3,6 +3,7 @@ $(function(){
 		setTimeout("add_index_to_fields()",500);
 	});
 	$(".remove_nested_fields").on('click', function(){
+		alert(1);
 		setTimeout("add_index_to_fields()",500);
 	});
 });
