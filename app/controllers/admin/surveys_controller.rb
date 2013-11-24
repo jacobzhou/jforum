@@ -37,6 +37,7 @@ class Admin::SurveysController < Admin::BaseController
 
   def edit_survey_questions
     @survey = Survey.find(params[:id])
-    @title = "编辑问题 - #{@survey.name}"
+    1.times { @survey.survey_questions.build }
+    @title = "#{@survey.name} - 编辑问题"
   end
 end

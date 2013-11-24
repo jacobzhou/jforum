@@ -3,7 +3,12 @@
     .pull-right= link_to '返回健康问卷管理', admin_surveys_path, :class => :btn
     = build_admin_navigation([@title])
   .cell
-    = simple_form_for [:admin, @survey], :html => {:class => 'form-horizontal'} do |f|
+    = simple_nested_form_for [:admin, @survey], :html => {:class => 'form-horizontal'} do |f|
       = f.input :name, label: "名称"
+      = f.fields_for :survey_questions do |nest_form| 
+		    %p
+		      = nest_form.input :title
+		      = nest_form.link_to_remove "删除"
+		  = f.link_to_add "添加问题", :survey_questions, :class => "btn"
       .form-actions
         = f.submit '保存', :class => 'btn btn-small btn-primary'
