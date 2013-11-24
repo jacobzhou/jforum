@@ -34,4 +34,9 @@ class Admin::SurveysController < Admin::BaseController
       redirect_to admin_root_path
     end
   end
+
+  def edit_survey_questions
+    @survey = Survey.find(params[:id])
+    @title = "编辑问题 - #{@survey.name}"
+  end
 end

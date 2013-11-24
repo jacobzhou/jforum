@@ -43,7 +43,11 @@ Jforum::Application.routes.draw do
   end
 
   namespace :admin do
-    resources :surveys
+    resources :surveys do
+      member do
+        edit_survey_questions
+      end
+    end
 
     resources :planes do
       resources :nodes
