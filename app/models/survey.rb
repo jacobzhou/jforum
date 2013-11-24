@@ -5,6 +5,6 @@ class Survey < ActiveRecord::Base
   validates :name, :presence => true
 
   has_many :survey_questions
-  accepts_nested_attributes_for :survey_questions_attributes, :reject_if => lambda { |item| item[:title].blank? }, :allow_destroy => true
-  
+  accepts_nested_attributes_for :survey_questions, :reject_if => lambda { |item| item[:title].blank? }, :allow_destroy => true
+
 end
