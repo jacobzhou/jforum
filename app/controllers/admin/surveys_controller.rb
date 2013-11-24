@@ -7,6 +7,7 @@ class Admin::SurveysController < Admin::BaseController
 
   def new
     @survey = Survey.new
+    1.times { @survey.survey_questions.build }
     @title = '新建健康问卷'
   end
 
@@ -33,11 +34,5 @@ class Admin::SurveysController < Admin::BaseController
     else
       redirect_to admin_root_path
     end
-  end
-
-  def edit_survey_questions
-    @survey = Survey.find(params[:id])
-    1.times { @survey.survey_questions.build }
-    @title = "#{@survey.name} - 编辑问题"
   end
 end

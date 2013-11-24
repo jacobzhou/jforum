@@ -1,3 +1,5 @@
 .w180 { width: 180px; }
 .ml180 { margin-left: 180px; }
 .simple_form .fields { margin-bottom: 5px;background-color: rgb(240, 240, 240); padding: 3px 0px;}
+.simple_form .help-block{ font-size: 12px;color: rgb(206, 145, 79) } 
+

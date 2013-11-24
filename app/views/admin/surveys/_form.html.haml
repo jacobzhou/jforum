@@ -8,7 +8,7 @@
       = f.simple_fields_for :survey_questions do |nest_form| 
         %p
           = nest_form.input :title
-          = nest_form.input :qtype
+          = nest_form.input :qtype, :collection => ["单选", "多选", "文本"], :include_blank => false
           = nest_form.input :options
           = nest_form.input :answers
           = nest_form.input :score
