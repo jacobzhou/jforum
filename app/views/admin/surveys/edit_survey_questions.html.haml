@@ -7,7 +7,16 @@
       = f.input :name, label: "名称"
       = f.simple_fields_for :survey_questions do |nest_form| 
         %p
-          = nest_form.input :title
+          = nest_form.input :title do
+            = nest_form.input_field :title
+            = nest_form.label :qtype
+            = nest_form.input_field :qtype
+            = nest_form.label :options
+            = nest_form.input_field :options
+            = nest_form.label :answers
+            = nest_form.input_field :answers
+            = nest_form.label :score
+            = nest_form.input_field :score
           = nest_form.link_to_remove "删除"
       = f.link_to_add "添加问题", :survey_questions, :class => "btn"
       .form-actions
