@@ -1,2 +1,3 @@
 .w180 { width: 180px; }
-.simple_form .fields { background-color: rgb(240, 240, 240); padding: 3px 0px;}
+.ml180 { margin-left: 180px; }
+.simple_form .fields { margin-bottom: 5px;background-color: rgb(240, 240, 240); padding: 3px 0px;}
