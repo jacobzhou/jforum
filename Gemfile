@@ -59,6 +59,7 @@ group :development do
   gem 'quiet_assets', '~> 1.0.1'
   gem 'awesome_print', '1.1.0'
   gem 'better_errors', '0.8.0'
+  gem "binding_of_caller" 
 end
 
 gem 'mime-types', '1.23'
