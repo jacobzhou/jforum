@@ -8,7 +8,7 @@ $(function(){
 });
 
 function add_index_to_fields(){
-	$(".simple_form  .fields").each(function(index, e){
+	$(".simple_form .fields:visible").each(function(index, e){
 		index++;
   	$(e).find('label:first').html(index+"、标题"); 
 	});
