@@ -6,13 +6,35 @@ SimpleForm.setup do |config|
   # stack. The options given below are used to wrap the
   # whole input.
 
-  config.wrappers :inline, :class => 'clearfix', :error_class => :error do |b|
+  config.wrappers :inline, :class => 'jfix', :error_class => :error do |b|
     b.use :placeholder
     b.use :label
     b.use :tag => 'div', :class => 'input' do |ba|
       ba.use :input
       ba.use :error, :tag => :span, :class => :'help-inline'
       ba.use :hint,  :tag => :span, :class => :'help-block'
+    end
+  end
+
+  config.wrappers :stacked, :class => "clearfix", :error_class => :error do |b|
+    b.use :placeholder
+    b.use :label
+    b.use :hint,  :tag => :span, :class => :'help-block'
+    b.use :tag => 'div', :class => 'input' do |input|
+      input.use :input
+      input.use :error, :tag => :span, :class => :'help-inline'
+    end
+  end
+
+  config.wrappers :etable, :tag => "tr", :error_class => "error" do |b|    
+    b.use :tag => "th" do |td|
+      td.use :label
+    end
+
+    b.use :tag => "td" do |td|
+      td.use :input
+      td.use :error
+      td.use :hint
     end
   end
   
