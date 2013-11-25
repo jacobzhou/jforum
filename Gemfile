@@ -13,6 +13,8 @@ gem 'pry-rails', :group => :development
 gem 'mysql2', '0.3.11'
 gem 'ancestry'
 
+gem 'ueditor_rails'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

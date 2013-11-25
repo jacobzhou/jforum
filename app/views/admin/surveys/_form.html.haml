@@ -5,6 +5,7 @@
   .cell
     = simple_nested_form_for [:admin, @survey], :html => {:class => 'form-horizontal'} do |f|
       = f.input :name, label: "名称"
+      = f.ueditor_text :content
       = f.simple_fields_for :survey_questions do |nest_form| 
         %p
           = nest_form.input :title

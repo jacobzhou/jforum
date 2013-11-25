@@ -6,6 +6,9 @@
 .simple_form select{ width: initial; }
 .tc{ text-align: center; }
 .center{ clear: both;margin: 0 auto; }
+.font16{ font-size: 16px; }
+.m18 { margin:18px;}
+.b { font-weight: bold; }
 
 
 

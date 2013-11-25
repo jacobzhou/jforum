@@ -13,6 +13,7 @@ zh:
     # Labels and hints examples
     labels:
       defaults:
+        content: '内容'
         title: '标题'
         qtype: '类型'
         options: '选项'
