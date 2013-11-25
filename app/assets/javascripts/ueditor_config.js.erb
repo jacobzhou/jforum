@@ -2,7 +2,7 @@
 //= require ueditor_rails/init
 
 window.MY_UEDITOR_CONFIG = {
-  imageUrl: ""            //图片上传提交地址
+  imageUrl: "<%= Rails.application.routes.url_helpers.ueditor_image_path %>"            //图片上传提交地址
   , imagePath: ""                     //图片修正地址，引用了fixedImagePath,如有特殊需求，可自行配置
   //,imageFieldName:"upfile"                   //图片数据的key,若此处修改，需要在后台对应文件修改对应参数
   //,compressSide:0                            //等比压缩的基准，确定maxImageSideLength参数的参照对象。0为按照最长边，1为按照宽度，2为按照高度
@@ -13,7 +13,7 @@ window.MY_UEDITOR_CONFIG = {
   , scrawlPath: ""                            //图片修正地址，同imagePath
 
   //附件上传配置区
-  , fileUrl: ""               //附件上传提交地址
+  , fileUrl: "<%= Rails.application.routes.url_helpers.ueditor_file_path %>"               //附件上传提交地址
   , filePath: ""                   //附件修正地址，同imagePath
   //,fileFieldName:"upfile"                    //附件提交的表单名，若此处修改，需要在后台对应文件修改对应参数
   //远程抓取配置区
@@ -46,16 +46,15 @@ window.MY_UEDITOR_CONFIG = {
   //工具栏上的所有的功能按钮和下拉框，可以在new编辑器的实例时选择自己需要的从新定义
   , toolbars: [
     ['fullscreen', 'source', '|', 'undo', 'redo', '|',
-      'bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
+      'bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
       'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
       'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
       'directionalityltr', 'directionalityrtl', 'indent', '|',
       'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|',
       'link', 'unlink', 'anchor', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
-      'insertimage', 'emotion', 'scrawl', 'insertvideo', 'music', 'attachment', 'map', 'gmap', 'insertframe', 'highlightcode', 'webapp', 'pagebreak', 'template', 'background', '|',
-      'horizontal', 'date', 'time', 'spechars', 'snapscreen', 'wordimage', '|',
-      'inserttable', 'deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols', '|',
-      'print', 'preview', 'searchreplace', 'help']
+      'insertimage', 'emotion', 'scrawl', 'insertvideo', 'music', 'attachment', 'map', '|',
+      'horizontal', 'date', 'time', 'spechars', '|',
+      'print', 'preview', 'searchreplace']
   ]
   //当鼠标放在工具栏上时显示的tooltip提示,留空支持自动多语言配置，否则以配置值为准
   , labelMap: {
@@ -153,17 +152,17 @@ window.MY_UEDITOR_CONFIG = {
   //  ]
 
   //右键菜单的内容，可以参考plugins/contextmenu.js里边的默认菜单的例子，label留空支持国际化，否则以此配置为准
-//        ,contextMenu:[
-//            {
-//                label:'',       //显示的名称
-//                cmdName:'selectall',//执行的command命令，当点击这个右键菜单时
-//                //exec可选，有了exec就会在点击时执行这个function，优先级高于cmdName
-//                exec:function () {
-//                    //this是当前编辑器的实例
-//                    //this.ui._dialogs['inserttableDialog'].open();
-//                }
-//            }
-//           ]
+       ,contextMenu:[
+           // {
+           //     label:'',       //显示的名称
+           //     cmdName:'selectall',//执行的command命令，当点击这个右键菜单时
+           //     //exec可选，有了exec就会在点击时执行这个function，优先级高于cmdName
+           //     exec:function () {
+           //         //this是当前编辑器的实例
+           //         //this.ui._dialogs['inserttableDialog'].open();
+           //     }
+           // }
+          ]
   //wordCount
   //,wordCount:1          //是否开启字数统计
   //,maximumWords:10000       //允许的最大字符数

@@ -1,6 +1,7 @@
 Jforum::Application.routes.draw do
   mount UeditorRails::Engine => '/ueditor'
-
+  post 'ueditor/file', :to => 'ueditor/assets#file'
+  post 'ueditor/image', :to => 'ueditor/assets#image'
   devise_for :users, :controllers => {:sessions => "sessions", :registrations => "registrations"}
   get 'settings' => 'users#edit'
   get 'member/:nickname' => 'users#show', :as => :member
