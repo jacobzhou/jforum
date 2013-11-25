@@ -27,7 +27,7 @@ module ApplicationHelper
   def survey_question_html(survey_question)
     case survey_question.qtype
     when '标题'
-      "<h4>#{survey_question.title}</h4>".html_safe
+      "<b>#{survey_question.title}</b>".html_safe
     when '文本'
       (survey_question.title + text_field_tag("answer[#{survey_question.id}]") + survey_question.suf_words).html_safe
     end
