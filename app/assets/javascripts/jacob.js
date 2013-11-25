@@ -5,6 +5,7 @@ $(function(){
 
 	$(".survey_qtype").on('change', 'select', function(){
 	});
+	$(".edui-default").removeAttr("style")
 });
 
 function add_index_to_fields(){
