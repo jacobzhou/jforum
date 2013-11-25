@@ -1,2 +1,3 @@
 <div class="center font16 m18 b"><%= @survey.name %></div>
+<div><%= raw @survey.content %></div>
 <%= render :partial => 'survey_questions', :object => @survey_questions.select{|q| q.is_root?}, :locals => {:i => nil} %>

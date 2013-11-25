@@ -13,7 +13,7 @@
           = nest_form.input :options
           = nest_form.input :suf_words
           = nest_form.input :position
-          = nest_form.input :parent_id, :collection => @survey.titles.map{|t| [t.title, t.id]}, :include_blank => "无"
+          = nest_form.input :parent_id, :collection => @survey.roots.map{|t| [t.title, t.id]}, :include_blank => "无"
           = nest_form.link_to_remove "删除", :class => "btn btn-small btn-warning ml180"
       = f.link_to_add "添加问题", :survey_questions, :class => "btn ml180"
       .form-actions

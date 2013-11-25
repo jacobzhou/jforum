@@ -1,4 +1,6 @@
 Jforum::Application.routes.draw do
+  mount UeditorRails::Engine => '/ueditor'
+
   devise_for :users, :controllers => {:sessions => "sessions", :registrations => "registrations"}
   get 'settings' => 'users#edit'
   get 'member/:nickname' => 'users#show', :as => :member
