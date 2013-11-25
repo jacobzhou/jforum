@@ -1,4 +1,4 @@
 <% survey_questions.each_with_index do |survey_question, index|%>
-	<p <%= "style='padding-left: #{i.split('.').size*5}px;'" if i %>><%= "#{i}." if i %><%= index+1 %>、<%= survey_question_htmle(survy_question) %></p>
+	<p <%= "style='padding-left: #{i.split('.').size*5}px;'" if i %>><%= "#{i}." if i %><%= index+1 %>、<%= survey_question_htmle(survey_question) %></p>
 	<%= render(:partial => 'survey_questions', :object => survey_question.children, :locals => {:i => [i, index+1].compact.join(".")}) if survey_question.has_children? %>
 <% end -%>
