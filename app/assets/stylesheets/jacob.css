@@ -4,4 +4,8 @@
 .simple_form .help-block{ font-size: 12px;color: rgb(206, 145, 79) } 
 .simple_form .error{ color: red }
 .simple_form select{ width: initial; }
+.tc{ text-align: center; }
+.center{ clear: both;margin: 0 auto; }
+
+
 

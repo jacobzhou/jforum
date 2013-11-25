@@ -1,7 +1,2 @@
-<h3><%= @survey.name %></h3>
-<% @survey.titles.each do |q| %>
-	<p><%= q.title %></p>
-<% end -%>
-<% @survey.survey_questions.each_with_index do |q, index| %>
-	<p><%= index + 1 %>、<%= survey_question_html(q) %></p>
-<% end -%>
+<div class="center"><b><%= @survey.name %></b></div>
+<%= render :partial => 'survey_questions', :object => @survey_questions.select{|q| q.root?}, :locals => {:i => nil} %>

@@ -29,7 +29,7 @@ module ApplicationHelper
     when '标题'
       "<h4>#{survey_question.title}</h4>".html_safe
     when '文本'
-      (survey_question.title + text_field_tag("answer_#{survey_question.id}") + survey_question.suf_words).html_safe
+      (survey_question.title + text_field_tag("answer[#{survey_question.id}]") + survey_question.suf_words).html_safe
     end
   end
 

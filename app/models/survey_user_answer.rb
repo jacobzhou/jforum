@@ -1,0 +1,9 @@
+# encoding: utf-8
+class SurveyUserAnswer < ActiveRecord::Base
+  attr_protected
+
+  belongs_to :survey_user_sheet
+
+  has_many :photos, :as => :photoable
+  accepts_nested_attributes_for :photos, :reject_if => lambda { |item| item[:file].blank? }, :allow_destroy => true
+end

@@ -7,7 +7,7 @@ class Survey < ActiveRecord::Base
   has_many :survey_questions
   accepts_nested_attributes_for :survey_questions, :reject_if => lambda { |item| item[:title].blank? }, :allow_destroy => true
 
-  def titles
-  	survey_questions.select{|q| q.qtype == "标题"}
+  def roots
+  	survey_questions.select{|q| q.is_root?}
   end
 end
