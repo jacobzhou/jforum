@@ -6,16 +6,16 @@
     = simple_nested_form_for [:admin, @survey], :html => {:class => 'form-horizontal'} do |f|
       = f.input :name, label: "名称"
       = f.ueditor_text :content, :width => 700
-      = f.simple_fields_for :survey_questions do |nest_form| 
-        %p
-          = nest_form.input :title
-          = nest_form.input :qtype, :collection => ["单选", "多选", "文本", "日期", "图片", "标题"], :include_blank => false, :input_html => {:class => "survey_qtype"}
-          = nest_form.input :options
-          = nest_form.input :suf_words
-          = nest_form.input :position
-          = nest_form.input :parent_id, :collection => @survey.roots.map{|t| [t.title, t.id]}, :include_blank => "无"
-          = nest_form.link_to_remove "删除", :class => "btn btn-small btn-warning ml180"
-      = f.link_to_add "添加问题", :survey_questions, :class => "btn ml180"
+      / = f.simple_fields_for :survey_questions do |nest_form| 
+      /   %p
+      /     = nest_form.input :title
+      /     = nest_form.input :qtype, :collection => ["单选", "多选", "文本", "日期", "图片", "标题"], :include_blank => false, :input_html => {:class => "survey_qtype"}
+      /     = nest_form.input :options
+      /     = nest_form.input :suf_words
+      /     = nest_form.input :position
+      /     = nest_form.input :parent_id, :collection => @survey.roots.map{|t| [t.title, t.id]}, :include_blank => "无"
+      /     = nest_form.link_to_remove "删除", :class => "btn btn-small btn-warning ml180"
+      / = f.link_to_add "添加问题", :survey_questions, :class => "btn ml180"
       .form-actions
         = f.submit '保存', :class => 'btn btn-small btn-primary'
 :javascript
