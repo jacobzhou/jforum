@@ -1,0 +1,15 @@
+.box
+  .cell
+    .fr
+    = build_admin_navigation([@title])
+  .cell
+    %table.table
+      %thead
+        %tr
+          %th{:align => :right} 序号
+          %th.w50{:align => :left} 名称
+          %th 操作
+      %tbody
+        = render @survey_user_sheets
+  .inner{:align => :center}
+    = paginate @survey_user_sheets

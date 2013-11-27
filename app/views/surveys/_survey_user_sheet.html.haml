@@ -1,0 +1,7 @@
+%tr.highlight
+  %td{:align => :right}= survey.id
+  %td.auto{:align => :left}
+    = survey_user_sheet.survey.name
+  %td.center
+    = link_to '修改健康答卷', edit_survey_path(survey_user_sheet), :class => 'btn btn-small btn-primary'
+    = link_to_blank '查看', survey_user_sheet, :class => 'btn btn-small'

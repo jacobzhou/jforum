@@ -12,6 +12,7 @@
         %li= link_to '个人设置', settings_path, :class => link_class
         - if current_user.can_manage_site?
           %li= link_to '管理后台', admin_root_path, :class => link_class
+        %li= link_to '健康问卷', surveys_path, :class => link_class
         %li= link_to '登出', destroy_user_session_path, :method => :delete, :class => link_class
       - else
         %li= link_to '注册', new_user_registration_path, :class => link_class

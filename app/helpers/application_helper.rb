@@ -33,7 +33,6 @@ module ApplicationHelper
     end
   end
 
-
   def add_title_item(item)
     @title_items.unshift item unless request.format.to_sym == :js
   end
