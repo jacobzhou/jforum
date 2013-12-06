@@ -1,0 +1,17 @@
+- content_for :content do
+  .span2
+    - dashboard_menu.each do |m|
+      .box.fix_cell
+        .cell
+          %strong.gray= m[:name]
+        - m[:items].each do |item|
+          .cell
+            = image_tag "admin/#{item.second}.png", :align => :absmiddle, :valign => :middle
+            &nbsp;
+            = link_to item.first, item.last, :class => (:current_item if @title == item.first)
+      = yield :rightbar
+  .span8
+    = render 'shared/alert'
+    = yield
+
+= render :template => 'layouts/base'

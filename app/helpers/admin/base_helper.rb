@@ -25,6 +25,18 @@ module Admin::BaseHelper
     link_to '删除', prepare_resource(resource), default_option.merge(options)
   end
 
+  def survey_menu
+    [
+      {
+        :name => '健康管理',
+        :items => [
+          ['健康问卷', 'dashboard', admin_root_path],
+          ['健康答卷', 'settings', admin_site_settings_path]
+        ]
+      }
+    ]
+  end
+
   def dashboard_menu
     [
       {

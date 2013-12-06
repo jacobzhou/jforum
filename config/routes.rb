@@ -54,6 +54,8 @@ Jforum::Application.routes.draw do
       end
     end
 
+    resources :survey_questions
+
     resources :planes do
       resources :nodes
       post :sort, :on => :collection

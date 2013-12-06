@@ -4,6 +4,11 @@ module ApplicationHelper
     append_notification_count(Siteconf.site_name + ' - ' + Siteconf.short_intro)
   end
 
+  # 加载js: <%= javascripts 'my1','my2' %>
+  def javascripts(*args)
+    javascript_include_tag(*args)
+  end
+
   def append_notification_count(title)
     return title if @unread_count == 0
     title + " (#{@unread_count})"
@@ -14,6 +19,8 @@ module ApplicationHelper
     add_title_item @title if @title.present?
     @title_items.join(' - ')
   end
+
+
 
   def link_to_blank(*args, &block)
     if block_given?

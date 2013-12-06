@@ -11,6 +11,5 @@
 //= require jquery_smooth_scroll
 //= require rabel
 //= require jacob
-//= require ./ueditor_config
 
 // require jquery_nested_form

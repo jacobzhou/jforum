@@ -1,0 +1,6 @@
+.box
+  .cell
+    = simple_form_for [:admin, @survey], :html => {:class => 'form-horizontal'} do |f|
+      = f.input :title
+      .form-actions
+        = f.submit '保存', :class => 'btn btn-small btn-primary'
