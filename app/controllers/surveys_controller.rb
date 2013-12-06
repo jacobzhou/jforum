@@ -13,7 +13,7 @@ class SurveysController < ApplicationController
   end
 
  	def index
- 		@survey_user_sheets = current_user.survey_user_sheets
+ 		@survey_user_sheets = current_user.survey_user_sheets.page(params[:page])
  	end
 
 end
