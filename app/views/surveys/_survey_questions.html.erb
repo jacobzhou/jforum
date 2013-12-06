@@ -1,18 +1,4 @@
-<%= javascripts 'jquery.ztree.all-3.5.min' %>
 <% survey_questions.each_with_index do |survey_question, index|%>
 	<p <%= raw("style='padding-left: #{i.split('.').size*5}px;'") if i %>><%= "#{i}." if i %><%= index+1 %>、<%= survey_question_html(survey_question) %></p>
 	<%#= render(:partial => 'survey_questions', :object => survey_question.children, :locals => {:i => [i, index+1].compact.join(".")}) if survey_question.has_children? %>
 <% end -%>
-<script type="text/javascript">
-$(document).ready(function(){
-    window.treeOpts = ({
-      current_tree: 'tree-list',
-      url: '/admin/survey_questions/',
-      model_name: 'SurveyQuestion',
-      zNodes: <%= @survey_questions.to_ztree_node.to_json.html_safe %>
-    })
-    window.ztreeSetting = <%= ztree_settings %>
-  }); 
-</script> 
-<%= javascripts 'sortable_tree' %>
-<%= tree_content('新增权限', url: new_admin_survey_question_path) %>
