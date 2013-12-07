@@ -5,8 +5,6 @@
   .cell
     = simple_nested_form_for [:admin, @survey], :html => {:class => 'form-horizontal'} do |f|
       = f.input :name do
-        %span
-          %b.switch= -
         = f.label :name
         = f.input_field :name
       / = f.ueditor_text :content, :width => 500
