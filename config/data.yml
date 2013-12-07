@@ -1,2 +1,11 @@
 defaults: &defaults
 	qtypes: [["多选", 0],["文本", 1],["单选", 2],["日期", 3],["图片", 4],["多文本", 5]]
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
