@@ -8,16 +8,25 @@
   <div class="cell">
     <%= simple_nested_form_for [:admin, @survey], :html => {:class => 'form-horizontal'} do |f| %>
       <%= f.input :name %>
-      <%= f.simple_fields_for :survey_questions do |nest_form| %>
-        <%= nest_form.input :title %>
-        <%= nest_form.input :qtype, :collection => DataDict.qtypes, :include_blank => false  %>
-	<%= nest_form.input :options %>
-	<%= nest_form.input :position %>
-        <div class="control-group">
-          <%= nest_form.link_to_remove "删除", :class => "btn btn-small btn-warning ml180" %>
-        </div>
-      <% end -%>
-      <%= f.link_to_add "添加问题", :survey_questions, :class => "btn ml180" %>
+      <table class="table table-bordered">
+        <tr>
+          <th>标题</th>
+          <th>类型</th>
+          <th>选项</th>
+          <th>排序</th>
+          <th>操作</th>
+        </tr>
+        <%= f.simple_fields_for :survey_questions do |nest_form| %>
+          <tr>
+            <td><%= nest_form.input_field :title %></td>
+            <td><%= nest_form.input_field :qtype, :collection => DataDict.qtypes, :include_blank => false %></td>
+            <td><%= nest_form.input_field :options %></td>
+            <td><%= nest_form.input_field :position %></td>
+            <td> <%= nest_form.link_to_remove "删除", :class => "btn btn-small btn-warning ml180" %></td>
+          </tr>
+        <% end -%>
+        <%= f.link_to_add "添加问题", :survey_questions, :class => "btn ml180" %>
+      </table>
       <div class="form-actions">
         <%= f.submit '保存', :class => 'btn btn-small btn-primary' %>
       </div>
