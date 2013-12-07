@@ -8,7 +8,7 @@
   <div class="cell">
     <%= simple_nested_form_for [:admin, @survey], :html => {:class => 'form-horizontal'} do |f| %>
       <%= f.input :name %>
-      <table class="table table-bordered">
+      <table class="table table-bordered" id="questions">
         <tr>
           <th>标题</th>
           <th>类型</th>
@@ -21,11 +21,11 @@
             <td><%= nest_form.input_field :title %></td>
             <td><%= nest_form.input_field :qtype, :collection => DataDict.qtypes, :include_blank => false %></td>
             <td><%= nest_form.input_field :options %></td>
-            <td><%= nest_form.input_field :position %></td>
-            <td> <%= nest_form.link_to_remove "删除", :class => "btn btn-small btn-warning ml180" %></td>
+            <td><%= nest_form.input_field :position, :input_html => {} %></td>
+            <td><%= nest_form.link_to_remove "删除", :class => "btn btn-small btn-warning" %></td>
           </tr>
         <% end -%>
-        <%= f.link_to_add "添加问题", :survey_questions, :class => "btn ml180" %>
+        <%= f.link_to_add "添加问题", :survey_questions, :class => "btn ml180", :data => { :target => "#questions" }%>
       </table>
       <div class="form-actions">
         <%= f.submit '保存', :class => 'btn btn-small btn-primary' %>
