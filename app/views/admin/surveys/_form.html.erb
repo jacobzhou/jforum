@@ -7,14 +7,12 @@
   </div>
   <div class="cell">
     <%= simple_nested_form_for [:admin, @survey], :html => {:class => 'form-horizontal'} do |f| %>
-      <%= f.input :name do %>
-        <%= f.label :name %>
-        <%= f.input_field :name %>
-      <% end -%>
+      <%= f.input :name %>
       <%= f.simple_fields_for :survey_questions do |nest_form| %>
         <%= nest_form.input :title %>
-        <%= nest_form.input :qtype, :collection => DataDict.qtypes, :include_blank => false %>
-        <%= nest_form.input :options %>
+        <%= nest_form.input :qtype, :collection => DataDict.qtypes, :include_blank => false  %>
+	<%= nest_form.input :options %>
+	<%= nest_form.input :position %>
         <div class="control-group">
           <%= nest_form.link_to_remove "删除", :class => "btn btn-small btn-warning ml180" %>
         </div>
