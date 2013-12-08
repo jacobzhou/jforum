@@ -10,5 +10,5 @@ class SurveyQuestion < ActiveRecord::Base
 
   has_ancestry
 
-  default_scope order("position DESC")
+  default_scope order("position ASC")
 end
