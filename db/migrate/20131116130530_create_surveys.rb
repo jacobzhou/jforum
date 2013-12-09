@@ -10,7 +10,7 @@ class CreateSurveys < ActiveRecord::Migration
       t.string :title
       t.integer :survey_id
       t.string :qtype
-      t.string :options
+      t.text :options
       t.string :answers
       t.float :score
       t.string :suf_words

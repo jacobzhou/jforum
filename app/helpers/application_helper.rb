@@ -20,8 +20,6 @@ module ApplicationHelper
     @title_items.join(' - ')
   end
 
-
-
   def link_to_blank(*args, &block)
     if block_given?
       args = [(args.first || {}), (args.second || {}).merge(:target => '_blank')]
@@ -31,13 +29,26 @@ module ApplicationHelper
     link_to(*args, block)
   end
 
-  def q_options(survey_question)
+  def options_html(survey_question)
     case survey_question.qtype
-    when '标题'
-      "<b>#{survey_question.title}</b>".html_safe
-    when '文本'
-      (survey_question.title + text_field_tag("answer[#{survey_question.id}]")).html_safe
+    when '1' # 文本
+      (text_area_tag("q[#{survey_question.id}]")).html_safe
     end
+    # (survey_question.title).html_safe
+  end
+
+  def question_html(survey_question, index)
+    content_tag(:div, :class => :cell) do
+      case survey_question.qtype
+      when '1'
+        content_tag(:div, "#{index}、#{survey_question.title}：#{text_field_tag('q[survey_question.id]','',:type => '', :class=>'underline_input')}".html_safe, :class => :question_title)
+      when '0'
+        
+      else
+        content_tag(:div, "#{index}、#{survey_question.title}", :class => :question_title) << 
+        content_tag(:div, options_html(survey_question), :class => :question_title)
+      end
+    end.html_safe
   end
 
   def add_title_item(item)

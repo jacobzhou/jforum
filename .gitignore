@@ -30,4 +30,5 @@ chromedriver.log
 .rvmrc
 /logfile
 config/application.yml
+db/schema.rb
 

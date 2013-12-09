@@ -8,6 +8,7 @@
   <div class="cell">
     <%= simple_nested_form_for [:admin, @survey], :html => {:class => 'form-horizontal'} do |f| %>
       <%= f.input :name %>
+      <%= f.input :desc, :input_html => {:rows => 5, :class => :span4} %>
       <table class="table table-bordered" id="questions">
         <tr>
           <th>标题</th>
@@ -26,7 +27,7 @@
           </tr>
         <% end -%>
       </table>
-      <%= f.link_to_add "添加问题", :survey_questions, :class => "btn btn-primary ml180", :data => { :target => "#questions" }%>
+      <%= f.link_to_add "添加问题", :survey_questions, :class => "btn btn-primary", :data => { :target => "#questions" }%>
       <div class="form-actions">
         <%= f.submit '保存', :class => 'btn btn-small btn-primary' %>
       </div>
@@ -34,7 +35,7 @@
   </div>
 </div>
 <script type="text/javascript">
-  $(document).ready( function() {
-    add_index_to_fields();
+  $(function(){
+    $('textarea').each(function(){textarea_auto_height(this);})
   });
 </script>

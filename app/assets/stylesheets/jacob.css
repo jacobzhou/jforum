@@ -5,11 +5,32 @@
 .simple_form .help-block{ font-size: 12px;color: rgb(206, 145, 79) } 
 .simple_form .error{ color: red }
 .simple_form select{ width: initial; }
+.simple_form th{ text-align: center; }
 .tc{ text-align: center; }
 .center{ clear: both;margin: 0 auto; }
 .font16{ font-size: 16px; }
 .m18 { margin:18px;}
 .b { font-weight: bold; }
 
+/* 调差问卷 */
+.survey h1 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #f53d05;
+}
+.survey .desc{
+  padding: 12px;
+}
+.survey .question_title{
+  font-size: 14px;
+  color: #373A3D;
+  font-weight: bold;
+  line-height: 20px;
+}
+.survey .underline_input{
+  background-color: transparent;
+  border: 0;
+  border-bottom: solid 1px red;
+}
 
 

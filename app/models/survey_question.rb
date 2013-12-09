@@ -8,7 +8,7 @@ class SurveyQuestion < ActiveRecord::Base
 
   belongs_to :survey
 
-  has_ancestry
+  # has_ancestry
 
   default_scope order("position ASC")
 end

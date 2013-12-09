@@ -18,6 +18,7 @@ class Admin::SurveysController < Admin::BaseController
 
   def edit
     @survey = Survey.find(params[:id])
+    1.times { @survey.survey_questions.build } if @survey.survey_questions.blank?
     @title = '编辑健康问卷'
   end
 

@@ -11,5 +11,4 @@
 //= require jquery_smooth_scroll
 //= require rabel
 //= require jacob
-
-// require jquery_nested_form
+//= require jquery_nested_form

@@ -1,6 +1,6 @@
 # encoding: utf-8
 class Survey < ActiveRecord::Base
-  attr_accessible :content, :name, :survey_questions_attributes	
+  attr_accessible :desc, :content, :name, :survey_questions_attributes	
 
   validates :name, :presence => true
 

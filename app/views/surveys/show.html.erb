@@ -1,7 +1,14 @@
-<div class="center font16 m18 b"><%= @survey.name %></div>
-<% @survey_questions.each_with_index do |q| %>
+<div class="box">
   <div class="cell">
-    <h2><%= q.title %></h2>
-    <div><%= q_options(q) %></div>
+    <%= build_navigation(["健康问卷", @survey.name]) %>
   </div>
-<% end -%>
+  <div class="survey">
+    <h1 class="center"><%= @survey.name %></h1>
+    <div class="desc">
+      <%= @survey.desc %>
+    </div>
+    <% @survey_questions.each_with_index do |survey_question, index| %>
+      <%= question_html(survey_question, index + 1) %>
+    <% end -%>
+  </div>
+</div>

@@ -6,9 +6,12 @@ $(function(){
 	// $(".survey_qtype").on('change', 'select', function(){
 	// });
 	// $(".edui-default").removeAttr("style")
-	$(".qtype").change(function(){
-		$(this).parent().next().find('input').attr('disabled', true)
-	})
+	$(document).on('change', '.qtype', function(){
+		$(this).parent().next().find('input').attr('disabled', true);
+    if ($(this).val() == '0' || $(this).val() == '2' || $(this).val() == '5'){
+      $(this).parent().next().find('input').removeAttr('disabled');
+    }
+	});
 });
 
 // function add_index_to_fields(){
@@ -20,5 +23,9 @@ $(function(){
 // 		setTimeout("add_index_to_fields()", 300);
 // 	});
 // }
-
+// 自动适应高度textarea
+function textarea_auto_height(textarea){
+  textarea.style.height = "1px";
+  textarea.style.height = (25+textarea.scrollHeight)+"px";
+}
 

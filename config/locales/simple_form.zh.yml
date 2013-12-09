@@ -24,6 +24,7 @@ zh:
         default: '排序'
         position: '排序'
         name: '名称'
+        desc: '描述'
     hints:
       defaults: 
         options: '单选多选选项用空格隔开（如：经常 偶尔 从不）; 其他不用填'
