@@ -21,7 +21,7 @@
           <tr>
             <td><%= nest_form.input_field :title %></td>
             <td><%= nest_form.input_field :qtype, :collection => DataDict.qtypes, :include_blank => false, :class => "qtype" %></td>
-            <td><%= nest_form.input_field :options %></td>
+            <td><%= nest_form.input_field :options, :class => "h53" %></td>
             <td><%= nest_form.input_field :position, :class => "w55" %></td>
             <td><%= nest_form.link_to_remove "删除", :class => "btn btn-small btn-warning" %></td>
           </tr>
