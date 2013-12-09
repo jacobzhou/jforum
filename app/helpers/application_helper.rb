@@ -38,12 +38,20 @@ module ApplicationHelper
   end
 
   def question_html(survey_question, index)
+    option_id = "q[#{survey_question.id}]"
     content_tag(:div, :class => :cell) do
       case survey_question.qtype
       when '1'
-        content_tag(:div, "#{index}、#{survey_question.title}：#{text_field_tag('q[survey_question.id]','',:type => '', :class=>'underline_input')}".html_safe, :class => :question_title)
+        content_tag(:div, "#{index}、#{survey_question.title}：#{text_field_tag(option_id,'',:type => '', :class=>'underline_input')}".html_safe, :class => :question_title)
       when '0'
-        
+        content_tag(:div, "#{index}、#{survey_question.title}", :class => :question_title) << 
+        content_tag(:div, :class => :question_options) do
+          content_tag(:ul) do 
+            survey_question.options.split.each do |option|
+              content_tag(:li, check_box_tag(option_id)+option)
+            end.join
+          end
+        end
       else
         content_tag(:div, "#{index}、#{survey_question.title}", :class => :question_title) << 
         content_tag(:div, options_html(survey_question), :class => :question_title)
