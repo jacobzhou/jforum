@@ -32,7 +32,7 @@ class SurveyUserSheetsController < ApplicationController
   def update
     @survey_user_sheet = SurveyUserSheet.find(params[:id])
     params[:q].each do |k, v| 
-      @survey_user_sheet.survey_user_answers.find(k).update_attribute(:answers => v)
+      @survey_user_sheet.survey_user_answers.find_by_survey_question_id(k).update_attribute(:answers => v)
     end
     respond_with @survey_user_sheet, :location => survey_user_sheets_path
   end
