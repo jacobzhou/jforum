@@ -1,7 +1,7 @@
 # encoding: utf-8
 class SurveyUserSheetsController < ApplicationController
   def index
-    @survey_user_sheets = SurveyUserSheet.order('created_at DESC').page(params[:page])
+    @survey_user_sheets = SurveyUserSheet.includes(:survey).order('created_at DESC').page(params[:page])
     @title = '健康问卷'
   end
 

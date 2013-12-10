@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
   include BootstrapHelper
   include Exts
+  respond_to :html, :json, :js
 
   layout :find_layout
 
