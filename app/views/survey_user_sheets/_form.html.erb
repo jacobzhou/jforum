@@ -10,8 +10,10 @@
     </div>
     <%= form_for @survey_user_sheet, :html => {:multipart => true} do |f| %>
       <%= hidden_field_tag 'survey_id', @survey.id %>
-      <% @survey_user_sheet.survey_user_answers.each_with_index do |survey_user_answer, index| %>
-        <%= question_html(survey_user_answer, index + 1) %>
+      <% @survey_quetions.each_with_index do |survey_quetion, index| 
+        survey_user_answer = @survey_user_sheet.survey_user_answer(survey_quetion.id)
+      %>
+        <%= question_html(survey_quetion, survey_user_answer, index + 1) %>
       <% end -%>
       <%= f.submit "提交" %>
     <% end -%>

@@ -52,8 +52,9 @@ module ApplicationHelper
   end
   
   # survey[survey_questions_attributes][5][title]
-  def question_html(survey_user_answer, index)
-    survey_question = survey_user_answer.survey_question
+  def question_html(survey_question, survey_user_answer, index)
+   # survey_question = survey_user_answer.survey_question
+    survey_user_answer ||= SurveyUserAnswer.new
     option_id = "q[#{survey_question.id}]"
     content_tag(:div, :class => "cell oa") do
       label = question_label(survey_question, index)
