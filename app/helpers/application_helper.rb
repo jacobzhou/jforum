@@ -29,6 +29,10 @@ module ApplicationHelper
     link_to(*args, block)
   end
 
+  def include_my97
+    javascripts "/plugins/My97DatePicker/WdatePicker.js"
+  end
+
   def options_html(survey_question)
     case survey_question.qtype
     when '1' # 文本
@@ -37,25 +41,38 @@ module ApplicationHelper
     # (survey_question.title).html_safe
   end
 
+  def question_label(survey_question, index, content = "")
+    content_tag(:div, "#{index}、#{survey_question.title}：#{content}".html_safe, :class => :question_title)
+  end
+
   def question_html(survey_question, index)
     option_id = "q[#{survey_question.id}]"
-    content_tag(:div, :class => :cell) do
+    content_tag(:div, :class => "cell oa") do
+      label = question_label(survey_question, index)
+      content = ""
       case survey_question.qtype
       when '1'
-        content_tag(:div, "#{index}、#{survey_question.title}：#{text_field_tag(option_id,'',:type => '', :class=>'underline_input')}".html_safe, :class => :question_title)
+        label = question_label(survey_question, index, "#{text_field_tag(option_id,'',:type => '', :class=>'underline_input')}")
       when '0'
-        content_tag(:div, "#{index}、#{survey_question.title}", :class => :question_title) << 
-        content_tag(:div, :class => :question_options) do
+        content = content_tag(:div, :class => :question_options) do
           content_tag(:ul) do 
-            survey_question.options.split.each do |option|
-              content_tag(:li, check_box_tag(option_id)+option)
-            end.join
+            survey_question.options.split.collect{|option| concat(content_tag(:li, check_box_tag(option_id, option).concat(content_tag(:span, option, :class => "vm ml3")), :class => "m3_10"))}
           end
         end
+      when '2'
+        content = content_tag(:div, :class => :question_options) do
+          content_tag(:ul) do 
+            survey_question.options.split.collect{|option| concat(content_tag(:li, radio_button_tag(option_id, option).concat(content_tag(:span, option, :class => "vm ml3")), :class => "m3_10"))}
+          end
+        end
+      when '3'
+        label = question_label(survey_question, index, "#{text_field_tag(option_id,'',:type => '', :class => 'my97_date')}")
+      when '4'
+        label = question_label(survey_question, index, "#{file_field_tag(option_id, :class => 'question_file')}")
       else
-        content_tag(:div, "#{index}、#{survey_question.title}", :class => :question_title) << 
         content_tag(:div, options_html(survey_question), :class => :question_title)
       end
+      label + content
     end.html_safe
   end
 

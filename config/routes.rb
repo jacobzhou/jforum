@@ -23,6 +23,7 @@ Jforum::Application.routes.draw do
   get 'sitemap' => 'welcome#sitemap'
 
   resources :surveys
+  resources :survey_user_sheets
 
   resources :nodes do
     resources :topics do

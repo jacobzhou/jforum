@@ -8,7 +8,7 @@
     <div class="desc">
       <%= @survey.desc %>
     </div>
-    <%= form_tag @survey, :multipart => true do %>
+    <%= form_for @survey_user_sheet, :multipart => true do %>
       <% @survey_questions.each_with_index do |survey_question, index| %>
         <%= question_html(survey_question, index + 1) %>
       <% end -%>

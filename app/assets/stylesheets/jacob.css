@@ -1,7 +1,9 @@
 .w180 { width: 180px; }
 .w55 { width: 50px; }
 .h53 { height: 53px; }
-.ml180 { margin-left: 180px; }
+.vm { vertical-align: middle; }
+.oa { overflow: auto; }
+
 .simple_form .fields { margin-bottom: 5px;background-color: rgb(240, 240, 240); padding: 3px 0px;}
 .simple_form .help-block{ font-size: 12px;color: rgb(206, 145, 79) } 
 .simple_form .error{ color: red }
@@ -11,8 +13,11 @@
 .center{ clear: both;margin: 0 auto; }
 .font16{ font-size: 16px; }
 .m18 { margin:18px;}
+.m3_10 { margin: 3px 10px; }
+.ml180 { margin-left: 180px; }
+.ml3 { margin-left: 3px; }
 .b { font-weight: bold; }
-
+.my97_date { width: 100px; }
 /* 调差问卷 */
 .survey h1 {
   font-size: 20px;
@@ -32,6 +37,10 @@
   background-color: transparent;
   border: 0;
   border-bottom: solid 1px red;
+}
+.survey li{
+  float: left;
+  list-style-type: none;
 }
 
 

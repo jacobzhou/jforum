@@ -6,6 +6,7 @@ class SurveysController < ApplicationController
   end
 
   def update
+    p "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
   	@survey_user_sheet = SurveyUserSheet.create(:user_id => current_user.id, :survey_id => @survey.id)
 		params[:answer].each do |k, v|
 			@survey_user_sheet.survey_user_answers.create(:survey_question_id => k, :answers => v)
@@ -15,5 +16,9 @@ class SurveysController < ApplicationController
  	def index
  		@survey_user_sheets = current_user.survey_user_sheets.page(params[:page])
  	end
+
+  def create
+    render :text => params
+  end
 
 end

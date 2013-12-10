@@ -12,6 +12,20 @@ $(function(){
       $(this).parent().next().find('input').removeAttr('disabled');
     }
 	});
+
+  $(".my97_date").click(function(){
+    // $(this).attr("readonly", true);
+    WdatePicker();
+  });
+
+  $(document).on('change', '.question_file', function(){
+    var ary = $(this).val().split(".");
+    if (jQuery.inArray( ary[ary.length-1].toLowerCase(), ["jpg"] ) == -1){
+      alert("请上传图片");
+      $(this).val("");
+    }
+  });
+
 });
 
 // function add_index_to_fields(){

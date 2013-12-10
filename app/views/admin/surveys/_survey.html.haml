@@ -5,3 +5,4 @@
   %td.center
     = link_to '修改健康问卷', edit_admin_survey_path(survey), :class => 'btn btn-small btn-primary'
     = link_to_blank '查看', survey, :class => 'btn btn-small'
+    = link_to_blank '查看2', new_survey_user_sheet_path(:survey_id => survey.id), :class => 'btn btn-important btn-small'
