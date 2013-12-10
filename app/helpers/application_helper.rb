@@ -64,7 +64,7 @@ module ApplicationHelper
       when '0'
         content = content_tag(:div, :class => :question_options) do
           content_tag(:ul) do 
-            survey_question.options.split.collect{|option| concat(content_tag(:li, check_box_tag(option_id+'[]', option).concat(content_tag(:span, option, :class => "vm ml3")), :class => "m3_10"))}
+            survey_question.options.split.collect{|option| concat(content_tag(:li, check_box_tag(option_id+'[]', option, survey_user_answer.answers.include?(option)).concat(content_tag(:span, option, :class => "vm ml3")), :class => "m3_10"))}
           end
         end
       when '2'
@@ -74,7 +74,7 @@ module ApplicationHelper
           end
         end
       when '3'
-        label = question_label(survey_question, index, "#{text_field_tag(option_id,'',:type => '', :class => 'my97_date')}")
+        label = question_label(survey_question, index, "#{text_field_tag(option_id, survey_user_answer.answers, :class => 'my97_date')}")
       when '4'
         label = question_label(survey_question, index, "#{file_field_tag(option_id, :class => 'question_file')}")
       else
