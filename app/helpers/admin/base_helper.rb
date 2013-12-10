@@ -52,7 +52,8 @@ module Admin::BaseHelper
           ['广告位', 'ads', admin_advertisements_path],
           ['文件上传', 'cloud', admin_cloud_files_path],
           ['奖励记录', 'reward_history', admin_rewards_path],
-          ['健康问卷', 'reward_history', admin_surveys_path]
+          ['健康问卷', 'pages', admin_surveys_path]
+          ['健康答卷', 'pages', survey_user_sheets_path]
         ]
       }
     ]
