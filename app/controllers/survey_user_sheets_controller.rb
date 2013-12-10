@@ -25,7 +25,7 @@ class SurveyUserSheetsController < ApplicationController
 
   def edit
     @survey_user_sheet = SurveyUserSheet.find(params[:id])
-    1.times { @survey_user_sheet.survey_user_sheet_questions.build } if @survey_user_sheet.survey_user_sheet_questions.blank?
+    @survey = survey_user_sheet.survey
     @title = '编辑健康问卷'
   end
 
