@@ -26,6 +26,7 @@ class SurveyUserSheetsController < ApplicationController
   def edit
     @survey_user_sheet = SurveyUserSheet.find(params[:id])
     @survey = @survey_user_sheet.survey
+    @survey_questions = @survey.survey_questions
     @title = '编辑健康答卷'
   end
 
