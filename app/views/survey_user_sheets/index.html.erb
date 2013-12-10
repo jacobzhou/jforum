@@ -1,7 +1,8 @@
 <div class="box">
   <div class="cell">
     <div class="fr">
-      <%= admin_create_button('调查答卷', :survey_user_sheet) %>
+      <%= link_to '调查问卷', admin_surveys_path, :class => "btn btn-small" %>
+      <%#= admin_create_button('调查答卷', :survey_user_sheet) %>
     </div>
     <%= build_admin_navigation(['调查答卷']) %>
   </div>
