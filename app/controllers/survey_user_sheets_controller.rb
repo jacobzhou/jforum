@@ -15,10 +15,11 @@ class SurveyUserSheetsController < ApplicationController
   end
 
   def create
-    @survey_user_sheet = SurveyUserSheet.create(:survey_user_sheet_id => params[:survey_id], :user_id => current_user.id)
+    @survey_user_sheet = SurveyUserSheet.new(:survey_id => params[:survey_id], :user_id => current_user.id)
     params[:q].each do |k, v| 
       @survey_user_sheet.survey_user_answers.build(:survey_question_id => k, :answers => v)
     end
+    flash[:success] = "提交成功" if @survey_user_sheet.save
     respond_with @survey_user_sheet
   end
 
