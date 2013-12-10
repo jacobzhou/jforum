@@ -26,13 +26,15 @@ class SurveyUserSheetsController < ApplicationController
   def edit
     @survey_user_sheet = SurveyUserSheet.find(params[:id])
     @survey = @survey_user_sheet.survey
-    @title = '编辑健康问卷'
+    @title = '编辑健康答卷'
   end
 
   def update
     @survey_user_sheet = SurveyUserSheet.find(params[:id])
-    @survey_user_sheet.update_attributes(params[:survey_user_sheet])
-    respond_with :admin, @survey_user_sheet, :location => admin_survey_user_sheets_path
+    params[:q].each do |k, v| 
+      @survey_user_sheet.survey_user_answers.find(k).update_attribute(:answers => v)
+    end
+    respond_with @survey_user_sheet, :location => survey_user_sheets_path
   end
 
   def destroy
