@@ -20,7 +20,7 @@ class SurveyUserSheetsController < ApplicationController
       @survey_user_sheet.survey_user_answers.build(:survey_question_id => k, :answers => v)
     end
     flash[:success] = "提交成功" if @survey_user_sheet.save
-    respond_with @survey_user_sheet
+    respond_with @survey_user_sheet, :location => survey_user_sheets_path
   end
 
   def edit
