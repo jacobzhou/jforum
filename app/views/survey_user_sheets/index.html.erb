@@ -31,18 +31,3 @@
     </div>
   </div>
 </div>
-  .cell
-    .fr
-      = admin_create_button('创建新调查问卷', :survey)
-    = build_admin_navigation([@title])
-  .cell
-    %table.table
-      %thead
-        %tr
-          %th{:align => :right} 序号
-          %th.w50{:align => :left} 名称
-          %th 操作
-      %tbody
-        = render @surveys
-  .inner{:align => :center}
-    = paginate @surveys
