@@ -70,7 +70,7 @@ module ApplicationHelper
       when '2'
         content = content_tag(:div, :class => :question_options) do
           content_tag(:ul) do 
-            survey_question.options.split.collect{|option| concat(content_tag(:li, radio_button_tag(option_id, option).concat(content_tag(:span, option, :class => "vm ml3")), :class => "m3_10"))}
+            survey_question.options.split.collect{|option| concat(content_tag(:li, radio_button_tag(option_id, option, survey_user_answer.answers == option ).concat(content_tag(:span, option, :class => "vm ml3")), :class => "m3_10"))}
           end
         end
       when '3'
