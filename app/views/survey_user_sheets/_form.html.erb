@@ -8,11 +8,12 @@
     <div class="desc">
       <%= @survey.desc %>
     </div>
-    <%= form_for @survey_user_sheet, :multipart => true do %>
-      <% @survey_questions.each_with_index do |survey_question, index| %>
-        <%= question_html(survey_question, index + 1) %>
+    <%= form_for @survey_user_sheet, :html => {:multipart => true} do |f| %>
+      <%= hidden_field_tag 'survey_id', @survey.id %>
+      <% @survey_user_sheet.survey_user_answers.each_with_index do |survey_user_answer, index| %>
+        <%= question_html(survey_user_answer, index + 1) %>
       <% end -%>
-      <%= submit_tag "提交" %>
+      <%= f.submit "提交" %>
     <% end -%>
   </div>
 </div>

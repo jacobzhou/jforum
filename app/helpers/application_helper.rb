@@ -33,6 +33,12 @@ module ApplicationHelper
     javascripts "/plugins/My97DatePicker/WdatePicker.js"
   end
 
+  # 生成列表序号
+  def index_no(index, per = 30)
+    params[:page] ||= 1
+    (params[:page].to_i - 1) * per + index + 1
+  end
+
   def options_html(survey_question)
     case survey_question.qtype
     when '1' # 文本
@@ -44,15 +50,17 @@ module ApplicationHelper
   def question_label(survey_question, index, content = "")
     content_tag(:div, "#{index}、#{survey_question.title}：#{content}".html_safe, :class => :question_title)
   end
-
-  def question_html(survey_question, index)
+  
+  # survey[survey_questions_attributes][5][title]
+  def question_html(survey_user_answer, index)
+    survey_question = survey_user_answer.survey_question
     option_id = "q[#{survey_question.id}]"
     content_tag(:div, :class => "cell oa") do
       label = question_label(survey_question, index)
       content = ""
       case survey_question.qtype
       when '1'
-        label = question_label(survey_question, index, "#{text_field_tag(option_id,'',:type => '', :class=>'underline_input')}")
+        label = question_label(survey_question, index, "#{text_field_tag(option_id, survey_user_answer.answers,:type => '', :class=>'underline_input')}")
       when '0'
         content = content_tag(:div, :class => :question_options) do
           content_tag(:ul) do 

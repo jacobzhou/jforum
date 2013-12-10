@@ -2,7 +2,7 @@
 class SurveyUserSheetsController < ApplicationController
   def index
     @survey_user_sheets = SurveyUserSheet.order('created_at DESC').page(params[:page])
-    @title = '健康问卷管理'
+    @title = '健康问卷'
   end
 
   def new
@@ -15,8 +15,11 @@ class SurveyUserSheetsController < ApplicationController
   end
 
   def create
-    @survey_user_sheet = SurveyUserSheet.create(params[:survey_user_sheet])
-    respond_with :admin, @survey_user_sheet, :location => admin_survey_user_sheets_path
+    @survey_user_sheet = SurveyUserSheet.create(:survey_user_sheet_id => params[:survey_id], :user_id => current_user.id)
+    params[:q].each do |k, v| 
+      @survey_user_sheet.survey_user_answers.build(:survey_question_id => k, :answers => v)
+    end
+    respond_with @survey_user_sheet
   end
 
   def edit
