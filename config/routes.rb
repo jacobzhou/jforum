@@ -59,6 +59,7 @@ Jforum::Application.routes.draw do
       end
       collection do
         get :records
+        post :notify
       end
     end
 
