@@ -43,6 +43,8 @@ class Admin::SurveysController < Admin::BaseController
   end
 
   def notify
-    SurveyNotice.create(:user_id => , :survey_id => , :survey_question_id => , :noticer_id => current_user.id)
+    survey_user_answer = SurveyUserAnswer.find(params[:survey_user_answer_id])
+    flash[:success] = "提醒成功" if SurveyNotice.find_or_create_by(:user_id => survey_user_answer.survey_user_sheet.user_id, :survey_question_id => survey_user_answer.survey_question_id, :noticer_id => current_user.id)
+    redirect_to :back
   end
 end
