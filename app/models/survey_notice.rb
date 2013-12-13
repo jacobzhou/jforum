@@ -6,7 +6,7 @@ class SurveyNotice < ActiveRecord::Base
   validates :survey_question_id, :presence => true
 
   belongs_to :user
-  belongs_to :survey_question_id
+  belongs_to :survey_question
 
   default_value_for :status, 0
 end
