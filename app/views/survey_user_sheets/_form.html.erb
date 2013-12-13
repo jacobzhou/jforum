@@ -13,6 +13,7 @@
 </div>
 <% unless @can_edit %>
   <script type="text/javascript">
-    $("input").attr("disabled", true)
+    $("input").attr("disabled", true);
+    $(".sheet_submit").remove();
   </script>
 <% end -%>
