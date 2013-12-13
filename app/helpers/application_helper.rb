@@ -81,7 +81,7 @@ module ApplicationHelper
       else
         content_tag(:div, options_html(survey_question), :class => :question_title)
       end
-      nofify_link = (current_user.admin? && !survey_user_answer.new_record?) ? link_to("提醒更新", notify_admin_surveys_path(:survey_user_answer_id => survey_user_answer.id)) : ""
+      nofify_link = (current_user.can_manage_site? && !survey_user_answer.new_record?) ? link_to("提醒更新", notify_admin_surveys_path(:survey_user_answer_id => survey_user_answer.id)) : ""
       label + content + nofify_link
     end.html_safe
   end
