@@ -43,7 +43,7 @@ class CreateSurveys < ActiveRecord::Migration
       t.integer :noticer_id
       t.integer :survey_id
       t.integer :survey_question_id
-      t.integer :status, limit => 2, default => 0
+      t.integer :status, :limit => 2, :default => 0
       t.timestamps
     end   
     add_index :survey_notices, :user_id
