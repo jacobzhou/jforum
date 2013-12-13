@@ -27,7 +27,13 @@ class SurveyUserSheetsController < ApplicationController
     @survey_user_sheet = SurveyUserSheet.find(params[:id])
     @survey = @survey_user_sheet.survey
     @survey_questions = @survey.survey_questions
-    @title = '编辑健康答卷'
+    if current_user.id == @survey_user_sheet.id
+      @title = ["健康问卷", @survey.name]
+      @can_edit = true
+    else
+      @title = ["健康管理", "健康档案 - #{@survey_user_sheet.user.nickname}", @survey.name]
+      @can_edit = false
+    end
   end
 
   def update

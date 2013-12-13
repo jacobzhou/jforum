@@ -25,7 +25,7 @@
           <td><%= user.email %></td>
           <td>
             <% user.survey_user_sheets.each do |sheet| %>
-              <p><%= sheet.survey.name %></p>
+              <p><%= link_to_blank sheet.survey.name, edit_survey_user_sheet_path(sheet) %></p>
             <% end -%>
           </td>
           <td></td>
