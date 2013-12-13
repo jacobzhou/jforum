@@ -60,7 +60,7 @@ module ApplicationHelper
     content_tag(:div, :class => "cell oa") do
       label = question_label(survey_question, index, nofify_link)
       content = ""
-      case survey_question"多选", 0],["文本", 1],["单选", 2].qtype
+      case survey_question.qtype
       when '1' # 文本
         label = question_label(survey_question, index, "#{text_field_tag(option_id, survey_user_answer.answers,:type => '', :class=>'underline_input')}") + nofify_link
       when '0' # 多选
