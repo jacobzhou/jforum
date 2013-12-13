@@ -47,8 +47,8 @@ module ApplicationHelper
     # (survey_question.title).html_safe
   end
 
-  def question_label(survey_question, index, content = "")
-    content_tag(:div, "#{index}、#{survey_question.title}：#{content}".html_safe, :class => :question_title)
+  def question_label(survey_question, index, content = "", nofify_link = "")
+    content_tag(:div, "#{nofify_link} #{index}、#{survey_question.title}：#{content}".html_safe, :class => :question_title)
   end
   
   # survey[survey_questions_attributes][5][title]
@@ -58,7 +58,7 @@ module ApplicationHelper
     nofify_link = (current_user.can_manage_site? && !survey_user_answer.new_record?) ? link_to("提醒更新", notify_admin_surveys_path(:survey_user_answer_id => survey_user_answer.id), :method => :post , :class => "btn btn-small btn-warning") : ""
     option_id = "q[#{survey_question.id}]"
     content_tag(:div, :class => "cell oa") do
-      label = question_label(survey_question, index)
+      label = question_label(survey_question, index, nofify_link)
       content = ""
       case survey_question.qtype
       when '1'
@@ -82,7 +82,7 @@ module ApplicationHelper
       else
         content_tag(:div, options_html(survey_question), :class => :question_title)
       end
-      nofify_link + label + content
+      label + content
     end.html_safe
   end
 
