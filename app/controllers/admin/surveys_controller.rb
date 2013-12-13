@@ -36,4 +36,9 @@ class Admin::SurveysController < Admin::BaseController
       redirect_to admin_root_path
     end
   end
+
+  def records
+    @users = User.has_records.includes(:survey_user_sheets => :survey).page(params[:page])
+    #@survey_user_sheets = SurveyUserSheet.order('created_at DESC').page(params[:page])
+  end
 end

@@ -21,7 +21,7 @@ class SurveysController < ApplicationController
   end
 
   def health_record
-    
+
   end
 
 end

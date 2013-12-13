@@ -1,7 +1,9 @@
 .box
   .cell
     .fr
+      = link_to('调查问卷', admin_surveys_path, :class => "btn btn-small")
       = admin_create_button('创建新调查问卷', :survey)
+      = link_to('健康档案', records_admin_surveys_path, :class => "btn btn-small")
     = build_admin_navigation([@title])
   .cell
     %table.table

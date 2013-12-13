@@ -40,6 +40,8 @@ class User < ActiveRecord::Base
   has_many :survey_user_sheets
   before_create :create_acount
 
+  scope :has_records, joins("right join survey_user_sheets on survey_user_sheets.user_id = users.id")
+
   def latest_created_topics
     self.topics.order('created_at DESC').limit(10)
   end
