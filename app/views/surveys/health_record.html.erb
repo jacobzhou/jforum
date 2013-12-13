@@ -4,16 +4,38 @@
     <%= build_navigation(["个人健康档案"]) %>
   </div>
   <div class="survey">
-    <h1 class="center">个人健康档案</h1>
     <table class="table">
-      <thead>
-        <tr>
-          <th>序号</th>
-          <th>调查问卷</th>
-          <th>答卷时间</th>
-          <th>操作</th>
-        </tr>
-      </thead>
+      <tr>
+        <th colspan="2">您的健康基本信息</th>
+      </tr>
+      <tr>
+        <td>基本信息</td>
+        <td>
+          <p>你目前的健康状况是：</p>
+          <p>身高{文本|shengao} cm ,    体重{文本|tizhong}kg,</p>
+<p>脂肪率    %,   体重(BMI)指数    （自动计算体重/身高的平方(m)） </p>  
+<p>体重属于    范围。</p>
+        </td>
+      </tr>
+      <tr>
+        <td rowspan=3>实验室检查</td>
+        <td>
+<p>检查日期：{日期|rq}</p>
+<p>尿常规：</p>
+<p>尿潜血 1+，       尿蛋白3+      尿管型 5 </p>
+<p>病理管型 2.8      24h尿蛋白定量 3965 mg/24h。</p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+<p>血液生化： </p>
+<p>　　总蛋白 62g/l,  总胆固醇5.95mmol/L，</p>
+<p>甘油三酯3.68 mmol/L。</p>
+        </td>
+      </tr>
+      <tr>
+        <td><p>B超： {图片|pic}</p></td>
+      </tr>
     </table>
   </div>
 </div>
