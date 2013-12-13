@@ -55,6 +55,7 @@ module ApplicationHelper
   def question_html(survey_question, survey_user_answer, index)
    # survey_question = survey_user_answer.survey_question
     survey_user_answer ||= SurveyUserAnswer.new
+    nofify_link = (current_user.can_manage_site? && !survey_user_answer.new_record?) ? link_to("提醒更新", notify_admin_surveys_path(:survey_user_answer_id => survey_user_answer.id), :method => :post , :class => "btn btn-small btn-warning") : ""
     option_id = "q[#{survey_question.id}]"
     content_tag(:div, :class => "cell oa") do
       label = question_label(survey_question, index)
@@ -81,8 +82,7 @@ module ApplicationHelper
       else
         content_tag(:div, options_html(survey_question), :class => :question_title)
       end
-      nofify_link = (current_user.can_manage_site? && !survey_user_answer.new_record?) ? link_to("提醒更新", notify_admin_surveys_path(:survey_user_answer_id => survey_user_answer.id), :method => :post) : ""
-      label + content + nofify_link
+      nofify_link + label + content
     end.html_safe
   end
 
