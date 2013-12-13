@@ -28,10 +28,10 @@ class SurveyUserSheetsController < ApplicationController
     @survey = @survey_user_sheet.survey
     @survey_questions = @survey.survey_questions
     if current_user.id == @survey_user_sheet.id
-      @title = ["健康问卷", @survey.name]
+      @bread = ["健康问卷", @survey.name]
       @can_edit = true
     else
-      @title = ["健康管理", "健康档案 - #{@survey_user_sheet.user.nickname}", @survey.name]
+      @bread = ["健康管理", "健康档案 - #{@survey_user_sheet.user.nickname}", @survey.name]
       @can_edit = false
     end
   end

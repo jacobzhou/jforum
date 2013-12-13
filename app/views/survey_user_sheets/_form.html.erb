@@ -1,7 +1,7 @@
 <%= include_my97 %>
 <div class="box">
   <div class="cell">
-    <%= build_navigation(@title) %>
+    <%= build_navigation(@bread) %>
   </div>
   <div class="survey">
     <h1 class="center"><%= @survey.name %></h1>
@@ -16,4 +16,4 @@
     $("input").attr("disabled", true);
     $(".sheet_submit").remove();
   </script>
-<% end -%>
+<% end -%>  
