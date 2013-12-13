@@ -25,6 +25,7 @@ class SurveyUserSheetsController < ApplicationController
 
   def edit
     @survey_user_sheet = SurveyUserSheet.find(params[:id])
+    authorize! :update, @survey_user_sheet
     @survey = @survey_user_sheet.survey
     @survey_questions = @survey.survey_questions
     if current_user.id == @survey_user_sheet.id

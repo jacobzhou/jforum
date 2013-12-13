@@ -41,4 +41,8 @@ class Admin::SurveysController < Admin::BaseController
     @users = User.has_records.includes(:survey_user_sheets => :survey).page(params[:page])
     #@survey_user_sheets = SurveyUserSheet.order('created_at DESC').page(params[:page])
   end
+
+  def notify
+    SurveyNotice.create(:user_id => , :survey_id => , :survey_question_id => , :noticer_id => current_user.id)
+  end
 end

@@ -12,6 +12,10 @@ class Ability
       bookmark.user == user
     end
 
+    can :update, SurveyUserSheet do |sheet|
+      sheet.user == user || user.can_manage_site?
+    end
+
     can :edit_info, User do |target_user|
       user.root? or (user.can_manage_site? and (not target_user.root?))
     end
