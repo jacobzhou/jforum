@@ -22,7 +22,11 @@ Jforum::Application.routes.draw do
   get 'captcha' => 'welcome#captcha'
   get 'sitemap' => 'welcome#sitemap'
 
-  resources :surveys
+  resources :surveys do 
+    collection do
+      get :health_record
+    end
+  end
   resources :survey_user_sheets
 
   resources :nodes do
