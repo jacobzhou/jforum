@@ -60,25 +60,25 @@ module ApplicationHelper
     content_tag(:div, :class => "cell oa") do
       label = question_label(survey_question, index, nofify_link)
       content = ""
-      case survey_question.qtype
-      when '1'
-        label = question_label(survey_question, index, "#{text_field_tag(option_id, survey_user_answer.answers,:type => '', :class=>'underline_input')}")
-      when '0'
+      case survey_question"多选", 0],["文本", 1],["单选", 2].qtype
+      when '1' # 文本
+        label = question_label(survey_question, index, "#{text_field_tag(option_id, survey_user_answer.answers,:type => '', :class=>'underline_input')}") + nofify_link
+      when '0' # 多选
         content = content_tag(:div, :class => :question_options) do
           content_tag(:ul) do 
             survey_question.options.split.collect{|option| concat(content_tag(:li, check_box_tag(option_id+'[]', option, survey_user_answer.answers.include?(option)).concat(content_tag(:span, option, :class => "vm ml3")), :class => "m3_10"))}
           end
         end
-      when '2'
+      when '2' # 单选
         content = content_tag(:div, :class => :question_options) do
           content_tag(:ul) do 
             survey_question.options.split.collect{|option| concat(content_tag(:li, radio_button_tag(option_id, option, survey_user_answer.answers == option ).concat(content_tag(:span, option, :class => "vm ml3")), :class => "m3_10"))}
           end
         end
-      when '3'
-        label = question_label(survey_question, index, "#{text_field_tag(option_id, survey_user_answer.answers, :class => 'my97_date')}")
-      when '4'
-        label = question_label(survey_question, index, "#{file_field_tag(option_id, :class => 'question_file')}")
+      when '3' # 日期
+        label = question_label(survey_question, index, "#{text_field_tag(option_id, survey_user_answer.answers, :class => 'my97_date')}") + nofify_link
+      when '4' # 图片
+        label = question_label(survey_question, index, "#{file_field_tag(option_id, :class => 'question_file')}") + nofify_link
       else
         content_tag(:div, options_html(survey_question), :class => :question_title)
       end
