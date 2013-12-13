@@ -79,8 +79,6 @@ module ApplicationHelper
         label = question_label(survey_question, index, "#{text_field_tag(option_id, survey_user_answer.answers, :class => 'my97_date')}") + nofify_link
       when '4' # 图片
         label = question_label(survey_question, index, "#{file_field_tag(option_id, :class => 'question_file')}") + nofify_link
-      else
-        content_tag(:div, options_html(survey_question), :class => :question_title)
       end
       label + content
     end.html_safe
