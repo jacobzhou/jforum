@@ -57,6 +57,9 @@ Jforum::Application.routes.draw do
       member do
         get :edit_survey_questions
       end
+      collection do
+        get :records
+      end
     end
 
     resources :survey_questions
