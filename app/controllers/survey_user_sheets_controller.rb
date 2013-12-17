@@ -12,6 +12,7 @@ class SurveyUserSheetsController < ApplicationController
     @survey_questions.each do |survey_question|
       @survey_user_sheet.survey_user_answers.build(:survey_question_id => survey_question.id)
     end
+    @bread = ["健康问卷", @survey.name]
   end
 
   def create
