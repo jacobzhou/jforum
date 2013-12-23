@@ -10,4 +10,8 @@ class SurveyUserSheet < ActiveRecord::Base
   def survey_user_answer(survey_quetion_id)
     self.survey_user_answers.find_by_survey_question_id(survey_quetion_id)
   end
+
+  def in_period?
+    (Time.now - self.created_at) > self.period.days
+  end
 end

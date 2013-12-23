@@ -19,6 +19,10 @@ class SurveyUserSheetsController < ApplicationController
   end
 
   def create
+    if current_user.survey_user_sheets.find_by_id(params[:survey_id]).try(:in_period?)
+      flash[:error] = "抱歉，还不能更新。"
+      redirect_to :back and return
+    end
     @survey_user_sheet = SurveyUserSheet.new(:survey_id => params[:survey_id], :user_id => current_user.id)
     params[:q].each do |k, v| 
       if v.class.to_s == "ActionDispatch::Http::UploadedFile" 
