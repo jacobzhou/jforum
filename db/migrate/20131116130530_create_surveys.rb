@@ -3,6 +3,7 @@ class CreateSurveys < ActiveRecord::Migration
     create_table :surveys do |t|
       t.string :name
       t.string :desc
+      t.integer :period, :null => false
       t.timestamps
     end
 

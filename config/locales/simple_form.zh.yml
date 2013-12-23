@@ -22,6 +22,7 @@ zh:
         suf_words: '文字后缀'
         parent_id: '父标题'
         default: '排序'
+        period: '更新周期（天）'
         position: '排序'
         name: '名称'
         desc: '描述'
