@@ -1,7 +1,7 @@
 .box
   .cell
     .fr
-    = build_admin_navigation([@title])
+    = build_navigation(["健康问卷"])
   .cell
     %table.table
       %thead
@@ -10,6 +10,6 @@
           %th.w50{:align => :left} 名称
           %th 操作
       %tbody
-        = render @survey_user_sheets
+        = render @surveys
   .inner{:align => :center}
-    = paginate @survey_user_sheets
+    = paginate @surveys

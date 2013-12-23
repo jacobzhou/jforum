@@ -20,7 +20,7 @@ $(function(){
 
   $(document).on('change', '.question_file', function(){
     var ary = $(this).val().split(".");
-    if (jQuery.inArray( ary[ary.length-1].toLowerCase(), ["jpg"] ) == -1){
+    if (jQuery.inArray( ary[ary.length-1].toLowerCase(), ["jpg", "png", "gif"] ) == -1){
       alert("请上传图片");
       $(this).val("");
     }

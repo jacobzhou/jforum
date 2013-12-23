@@ -1,5 +1,7 @@
 # encoding: utf-8
 class SurveysController < ApplicationController
+  layout "jk"
+
   def show
     @survey = Survey.find(params[:id])
     @survey_questions = @survey.survey_questions
@@ -13,7 +15,8 @@ class SurveysController < ApplicationController
   end
 
  	def index
- 		@survey_user_sheets = current_user.survey_user_sheets.page(params[:page])
+ 		@surveys = Survey.page(params[:page])
+    @breadcrumbs = ["健康管理"]
  	end
 
   def create

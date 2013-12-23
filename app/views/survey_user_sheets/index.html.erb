@@ -22,7 +22,7 @@
           <td><%= survey_user_sheet.survey.name %></td>
           <td><%= survey_user_sheet.created_at %></td>
           <td><%= link_to "修改", edit_survey_user_sheet_path(survey_user_sheet) %>
-              <%= link_to "删除", '' %>
+              <%= link_to "删除", survey_user_sheet, :method => :delete, :confirm => "您确定吗？" %>
           </td>
         </tr> 
       <% end -%>

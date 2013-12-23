@@ -54,7 +54,7 @@ module ApplicationHelper
   # survey[survey_questions_attributes][5][title]
   def question_html(survey_question, survey_user_answer, index)
    # survey_question = survey_user_answer.survey_question
-    survey_user_answer ||= SurveyUserAnswer.new
+    survey_user_answer ||= SurveyUserAnswer.new(:answers => "")
     nofify_link = (current_user.can_manage_site? && !survey_user_answer.new_record?) ? link_to("提醒更新", notify_admin_surveys_path(:survey_user_answer_id => survey_user_answer.id), :method => :post , :class => "btn btn-small btn-warning") : ""
     option_id = "q[#{survey_question.id}]"
     content_tag(:div, :class => "cell oa") do

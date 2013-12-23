@@ -25,18 +25,6 @@ module Admin::BaseHelper
     link_to '删除', prepare_resource(resource), default_option.merge(options)
   end
 
-  def survey_menu
-    [
-      {
-        :name => '健康管理',
-        :items => [
-          ['健康问卷', 'dashboard', admin_root_path],
-          ['健康答卷', 'settings', admin_site_settings_path]
-        ]
-      }
-    ]
-  end
-
   def dashboard_menu
     [
       {
@@ -53,6 +41,19 @@ module Admin::BaseHelper
           ['文件上传', 'cloud', admin_cloud_files_path],
           ['奖励记录', 'reward_history', admin_rewards_path],
           ['健康管理', 'pages', admin_surveys_path],
+          ['健康答卷', 'pages', survey_user_sheets_path],
+          ['个人健康档案', 'pages', health_record_surveys_path]
+        ]
+      }
+    ]
+  end
+
+  def jk_menu
+    [
+      {
+        :name => '健康管理',
+        :items => [
+          ['健康问卷', 'pages', surveys_path],
           ['健康答卷', 'pages', survey_user_sheets_path],
           ['个人健康档案', 'pages', health_record_surveys_path]
         ]
