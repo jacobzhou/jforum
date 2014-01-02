@@ -1,0 +1,47 @@
+<div class="box">
+  <div class="cell">
+    <div class="fr">
+      <%= link_to '调查问卷', admin_surveys_path, :class => "btn btn-small" %>
+      <%#= admin_create_button('调查答卷', :survey_user_sheet) %>
+    </div>
+    <%= build_admin_navigation(['调查答卷审核']) %>
+  </div>
+  <div class="cell">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>用户昵称</th>
+          <th>EMAIL</th>
+          <th>健康答卷</th>
+          <th>状态</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <% @users.each_with_index do |user, index| %>
+        <tr>
+          <td><%= index_no(index, @users.size) %></td>
+          <td><%= user_profile_link(user, :class => :black) %>
+          </td>
+          <td><%= user.email %></td>
+          <td>
+            <% user.survey_user_sheets.each do |sheet| %>
+              <p><%= link_to_blank sheet.survey.name, edit_survey_user_sheet_path(sheet) %></p>
+            <% end -%>
+          </td>
+          <% user.survey_user_sheets.each do |sheet| %>
+            <td>
+              <%= sheet.audit? ? label_tag_html("已通过", :title => "#{sheet.auditor_name}于#{sheet.audit_at}") : label_tag_html("待审核", :title => "#{sheet.auditor_name}于#{sheet.audit_at}", :style => "warning") %>
+            </td>
+            <td>
+              <%= sheet.audit? ? link_to("撤销通过", audit_admin_survey_user_sheet_path(sheet), :method => "post", :confirm => "确定撤销通过#{user.nickname}的#{sheet.survey.name}答卷信息吗？") : link_to("审核通过", audit_admin_survey_user_sheet_path(sheet), :method => "post", :confirm => "确定通过#{user.nickname}的#{sheet.survey.name}答卷信息吗？") %>
+          <% end -%>
+          <%= link_to("营养师答复", new_admin_survey_reply_path(:survey_user_id => user.id))%></td>
+        </tr> 
+      <% end -%>
+    </table>
+    <div class="inner">
+      <%= paginate @users %>
+    </div>
+  </div>
+</div>

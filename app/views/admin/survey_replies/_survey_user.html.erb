@@ -1,0 +1,26 @@
+<div class="alert alert-info">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>用户昵称</th>
+        <th>EMAIL</th>
+        <th>健康答卷</th>
+        <th>状态</th>
+      </tr>
+    </thead>
+    <tr>
+      <td><%= user_profile_link(@user, :class => :black) %></td>
+      <td><%= @user.email %></td>
+      <td>
+        <% @user.survey_user_sheets.each do |sheet| %>
+          <p><%= link_to_blank sheet.survey.name, edit_survey_user_sheet_path(sheet) %></p>
+        <% end -%>
+      </td>
+      <% @user.survey_user_sheets.each do |sheet| %>
+        <td>
+          <%= sheet.audit? ? label_tag_html("已通过", :title => "#{sheet.auditor_name}于#{sheet.audit_at}") : label_tag_html("待审核", :title => "#{sheet.auditor_name}于#{sheet.audit_at}", :style => "warning") %>
+        </td>
+      <% end -%>
+    </tr> 
+  </table>
+</div>

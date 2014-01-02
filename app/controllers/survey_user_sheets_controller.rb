@@ -40,7 +40,7 @@ class SurveyUserSheetsController < ApplicationController
     authorize! :update, @survey_user_sheet
     @survey = @survey_user_sheet.survey
     @survey_questions = @survey.survey_questions
-    if current_user.id == @survey_user_sheet.id
+    if current_user.id == @survey_user_sheet.user_id && !@survey_user_sheet.audit?
       @bread = ["健康问卷", @survey.name]
       @can_edit = true
     else

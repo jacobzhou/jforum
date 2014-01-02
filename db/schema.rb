@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131116130530) do
+ActiveRecord::Schema.define(:version => 20140102074144) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -179,19 +179,48 @@ ActiveRecord::Schema.define(:version => 20131116130530) do
 
   add_index "settings", ["thing_type", "thing_id", "var"], :name => "index_settings_on_thing_type_and_thing_id_and_var", :unique => true
 
+  create_table "survey_notices", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "noticer_id"
+    t.integer  "survey_id"
+    t.integer  "survey_question_id"
+    t.integer  "status",             :limit => 2, :default => 0
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
+  end
+
+  add_index "survey_notices", ["status"], :name => "index_survey_notices_on_status"
+  add_index "survey_notices", ["survey_question_id"], :name => "index_survey_notices_on_survey_question_id"
+  add_index "survey_notices", ["user_id"], :name => "index_survey_notices_on_user_id"
+
   create_table "survey_questions", :force => true do |t|
     t.string   "title"
     t.integer  "survey_id"
     t.string   "qtype"
     t.text     "options"
     t.string   "answers"
+    t.string   "suf_words"
     t.float    "score"
-    t.float    "position",   :default => 0.0
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
+    t.string   "ancestry"
+    t.float    "position",   :default => 0.0
   end
 
-  add_index "survey_questions", ["survey_id"], :name => "index_survery_questions_on_survery_id"
+  add_index "survey_questions", ["survey_id"], :name => "index_survey_questions_on_survey_id"
+
+  create_table "survey_replies", :force => true do |t|
+    t.integer  "survey_user_id"
+    t.integer  "user_id"
+    t.text     "intro"
+    t.text     "point"
+    t.text     "meal"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "survey_replies", ["survey_user_id"], :name => "index_survey_replies_on_survey_user_id"
+  add_index "survey_replies", ["user_id"], :name => "index_survey_replies_on_user_id"
 
   create_table "survey_user_answers", :force => true do |t|
     t.integer  "survey_user_sheet_id"
@@ -202,23 +231,28 @@ ActiveRecord::Schema.define(:version => 20131116130530) do
     t.integer  "survey_question_id"
   end
 
-  add_index "survey_user_answers", ["survey_user_sheet_id"], :name => "index_survery_user_answers_on_survery_user_sheet_id"
+  add_index "survey_user_answers", ["survey_user_sheet_id"], :name => "index_survey_user_answers_on_survey_user_sheet_id"
 
   create_table "survey_user_sheets", :force => true do |t|
     t.integer  "survey_id"
     t.float    "score"
     t.string   "desc"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "auditor_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "auditor_name"
+    t.datetime "audit_at"
   end
 
-  add_index "survey_user_sheets", ["survey_id"], :name => "index_survery_user_sheets_on_survery_id"
-  add_index "survey_user_sheets", ["user_id"], :name => "index_survery_user_sheets_on_user_id"
+  add_index "survey_user_sheets", ["survey_id"], :name => "index_survey_user_sheets_on_survey_id"
+  add_index "survey_user_sheets", ["user_id"], :name => "index_survey_user_sheets_on_user_id"
 
   create_table "surveys", :force => true do |t|
     t.string   "name"
-    t.text     "desc"
+    t.string   "desc"
+    t.text     "content"
+    t.integer  "period"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

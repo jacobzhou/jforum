@@ -1,0 +1,32 @@
+<%= javascripts "i_ueditor" %>
+<div class="box">
+  <div class="cell">
+    <div class="pull">
+      <div class="fr">
+        <%= link_to '营养师答复列表', admin_survey_replies_path, :class => :btn %>
+      </div>
+      <%= build_admin_navigation([@title]) %>
+    </div>
+  </div>
+  <div class="cell">
+    <%= render "survey_user" %>
+    <%= simple_form_for [:admin, @survey_reply], :html => {:class => 'form-horizontal'} do |f| %>
+      <%= f.input :survey_user_id, :as => :hidden %>
+      <%= f.input :user_id, :as => :hidden %>
+      <%= f.input :title %>
+      <%= f.input :intro do %>
+        <%= f.ueditor_text :intro, :width => "90%" %>
+      <% end %>
+      <%= f.input :point do %>
+        <%= f.ueditor_text :point, :width => "90%" %>
+      <% end %>
+      <%= f.input :meal, :input_html => {:style => "width:90%"}, :placeholder => "牛奶 120m", :hint => "每行一条数据，食物和用量之间逗号隔开：如'牛奶  120ml'" %>
+      <div class="form-actions">
+        <%= button_tag '预览', :class => 'btn btn-small btn-primary' %>
+        <%= f.submit '暂存', :class => 'btn btn-small btn-warning' %>
+        <%= f.submit '确定并发送邮件', :class => 'btn btn-small btn-primary' %>
+      </div>
+    <% end -%>
+  </div>
+</div>
+

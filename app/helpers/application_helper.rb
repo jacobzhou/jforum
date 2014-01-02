@@ -33,6 +33,21 @@ module ApplicationHelper
     javascripts "/plugins/My97DatePicker/WdatePicker.js"
   end
 
+  def label_tag_html(text, options = {})
+    options[:style] = 'info' unless options[:style]
+    "<span title='#{options[:title]}' class='label label-#{options[:style]}'>#{text}</span>".html_safe
+  end
+
+  # 温馨提示
+  def tips(*args)
+    content_tag(:div, :class => "alert alert-info") do
+      content_tag(:h5, "小贴士：", :class => "alert-heading") <<
+        content_tag(:ol) do
+          args.map{|arg| concat content_tag(:li, arg) }
+        end
+    end
+  end
+
   # 生成列表序号
   def index_no(index, per = 30)
     params[:page] ||= 1
@@ -55,7 +70,7 @@ module ApplicationHelper
   def question_html(survey_question, survey_user_answer, index)
    # survey_question = survey_user_answer.survey_question
     survey_user_answer ||= SurveyUserAnswer.new(:answers => "")
-    nofify_link = (current_user.can_manage_site? && !survey_user_answer.new_record?) ? link_to("提醒更新", notify_admin_surveys_path(:survey_user_answer_id => survey_user_answer.id), :method => :post , :class => "btn btn-small btn-warning") : ""
+    nofify_link = ""  #(current_user.can_manage_site? && !survey_user_answer.new_record?) ? link_to("提醒更新", notify_admin_surveys_path(:survey_user_answer_id => survey_user_answer.id), :method => :post , :class => "btn btn-small btn-warning") : ""
     option_id = "q[#{survey_question.id}]"
     content_tag(:div, :class => "cell oa") do
       label = question_label(survey_question, index, nofify_link)
@@ -79,6 +94,7 @@ module ApplicationHelper
         label = question_label(survey_question, index, "#{text_field_tag(option_id, survey_user_answer.answers, :class => 'my97_date')}") + nofify_link
       when '4' # 图片
         label = question_label(survey_question, index, "#{file_field_tag(option_id, :class => 'question_file')}") + nofify_link
+        label += image_tag(survey_user_answer.photos.first.file.url) unless survey_user_answer.new_record?
       end
       label + content
     end.html_safe

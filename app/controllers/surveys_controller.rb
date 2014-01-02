@@ -15,7 +15,7 @@ class SurveysController < ApplicationController
   end
 
  	def index
- 		@surveys = Survey.page(params[:page])
+ 		@surveys = Survey.includes([:survey_user_sheets]).page(params[:page])
     @breadcrumbs = ["健康管理"]
  	end
 

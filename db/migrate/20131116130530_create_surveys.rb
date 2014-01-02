@@ -25,6 +25,9 @@ class CreateSurveys < ActiveRecord::Migration
       t.float :score
       t.string :desc
       t.integer :user_id
+      t.integer :auditor_id
+      t.string :auditor_name
+      t.datetime :audit_at
       t.timestamps
     end
 
@@ -35,11 +38,6 @@ class CreateSurveys < ActiveRecord::Migration
       t.timestamps
     end    
 
-    add_index :survey_questions, :survey_id
-    add_index :survey_user_sheets, :survey_id
-    add_index :survey_user_answers, :survey_user_sheet_id
-    add_index :survey_user_sheets, :user_id
-    
     create_table :survey_notices do |t|
       t.integer :user_id
       t.integer :noticer_id
@@ -47,7 +45,13 @@ class CreateSurveys < ActiveRecord::Migration
       t.integer :survey_question_id
       t.integer :status, :limit => 2, :default => 0
       t.timestamps
-    end   
+    end  
+
+    add_index :survey_questions, :survey_id
+    add_index :survey_user_sheets, :survey_id
+    add_index :survey_user_answers, :survey_user_sheet_id
+    add_index :survey_user_sheets, :user_id
+
     add_index :survey_notices, :user_id
     add_index :survey_notices, :survey_question_id
     add_index :survey_notices, :status

@@ -26,6 +26,9 @@ zh:
         position: '排序'
         name: '名称'
         desc: '描述'
+        intro: '健康导语'
+        point: '实施要点'
+        meal: '一日三餐'
     hints:
       defaults: 
         options: '单选多选选项用空格隔开（如：经常 偶尔 从不）; 其他不用填'

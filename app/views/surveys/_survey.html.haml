@@ -1,0 +1,6 @@
+%tr.highlight
+  %td{:align => :right}= survey.id
+  %td.auto{:align => :left}
+    = survey.name
+  %td.center
+    = link_to_blank '填写', new_survey_user_sheet_path(:survey_id => survey.id), :class => 'btn btn-warning btn-small'

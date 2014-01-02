@@ -172,6 +172,10 @@ class User < ActiveRecord::Base
     self.read_attribute(:avatar).present?
   end
 
+  def sheet_by_survey_id(survey_id) 
+    survey_user_sheets.find_by_survey_id(survey_id)
+  end
+
   private
     def create_acount
       self.build_account if self.account.nil?

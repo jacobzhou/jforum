@@ -1,0 +1,27 @@
+<% content_for :content do %>
+  <div class="span2">
+    <% jk_menu.each do |m| %>
+      <div class="box fix_cell">
+        <div class="cell">
+          <strong class="gray">
+            <%= m[:name] %>
+          </strong>
+        </div>
+        <% m[:items].each do |item| %>
+          <div class="cell">
+            <%= image_tag "admin/#{item.second}.png", :align => :absmiddle, :valign => :middle %>
+            &nbsp;
+            <%= link_to item.first, item.last, :class => (:current_item if @title == item.first) %>
+          </div>
+        <% end -%>
+      </div>
+      <%= yield :rightbar %>
+    <% end -%>
+  </div>
+  <div class="span8">
+    <%= render 'shared/alert' %>
+    <%= yield %>
+  </div>
+<% end -%>
+
+<%= render :template => 'layouts/base' %>

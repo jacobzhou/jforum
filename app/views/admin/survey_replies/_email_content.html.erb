@@ -1,0 +1,26 @@
+<div class="box">
+  <div class="cell">
+    <div class="pull">
+      <%= build_admin_navigation([@title]) %>
+    </div>
+  </div>
+  <div class="cell">
+    <%= render "survey_user" %>
+    <h1 class="tc"><%= @survey_reply.title %></h1>
+    <h3>健康导语</h3>
+    <div>
+      <%= @survey_reply.intro.html_safe %>
+    </div>
+    <h3>实施要点</h3>
+    <div>
+      <%= @survey_reply.point.html_safe %>
+    </div>
+    <h3>一日三餐</h3>
+    <div>
+      <%= @survey_reply.meal.html_safe %>
+    </div>
+
+    <div class="tc"><%= button_tag "将内容发送答复邮件到#{@user.email}", :class => 'btn btn-small btn-primary', :confirm => "您确定吗?" %></div>
+  </div>
+</div>
+

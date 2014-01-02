@@ -63,7 +63,17 @@ Jforum::Application.routes.draw do
       end
     end
 
+    resources :survey_replies
+
     resources :survey_questions
+    resources :survey_user_sheets, :only => [:index] do
+      member do
+        post :audit
+      end
+      collection do
+        get :reply
+      end
+    end
 
     resources :planes do
       resources :nodes

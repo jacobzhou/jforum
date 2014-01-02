@@ -1,0 +1,18 @@
+<% sheet = survey.survey_user_sheets.find_by_user_id(current_user.id) %>
+<tr class="highlight">
+  <td align="right"><%= survey.id %></td>
+  <td class="auto" align="left"><%= survey.name %></td>
+  <td><%= sheet.nil? ? "等待填写" : (sheet.audit? ? "审核通过" : "待审核") %></td>
+  <td class="center">
+    <% if sheet.try(:in_period?) %>
+      <% if sheet.audit? %>
+        <%= link_to("查看", edit_survey_user_sheet_path(sheet), :class => 'btn btn-info btn-small') %>
+        <p>离下个更新日期还有<%= sheet.next_days %>天</p>
+      <% else %>
+        <%= link_to("修改", edit_survey_user_sheet_path(sheet), :class => 'btn btn-warning btn-small') %>
+      <% end -%>
+    <% else %>
+      <%= link_to '填写', new_survey_user_sheet_path(:survey_id => survey.id), :class => 'btn btn-warning btn-small' %>
+    <% end -%>
+  </td>
+</tr>

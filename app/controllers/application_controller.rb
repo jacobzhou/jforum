@@ -86,6 +86,18 @@ class ApplicationController < ActionController::Base
     request.format == :mobile
   end
 
+  def flash_msg(status = :sucess, msg = "")
+    tip = case status
+      when :sucess
+       "操作成功！"
+      when :error
+        "操作失败！"
+      else
+        ""
+      end
+    flash[status] = tip + msg
+  end
+
   private
     # Overwriting the sign_out redirect path method
     def after_sign_out_path_for(resource_or_scope)
