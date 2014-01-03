@@ -11,7 +11,6 @@
       <td rowspan="<%= @survey_reply.survey_user.survey_user_sheets.size + 1 %>"><%= user_profile_link(@survey_reply.survey_user, :class => :black)%>（<%= @survey_reply.survey_user.email %>）
       </td>
     </tr>
-    <tr>
     <% @survey_reply.survey_user.survey_user_sheets.each do |sheet| %>
       <tr>
         <td><%= link_to_blank sheet.survey.name, edit_survey_user_sheet_path(sheet) %>
