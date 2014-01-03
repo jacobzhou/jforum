@@ -1,0 +1,13 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th colspan="4"><%= title %></th>
+    </tr>
+  </thead>
+  <% rs.each_with_index do |food, index| %>
+    <%= '<tr>'.html_safe if index%2 == 0 %>
+      <td width="25%"><%= food[0] %></td>
+      <td width="25%"><%= food[1] %></td>
+    <%= '</tr>'.html_safe unless index%2 == 0 %>
+  <% end -%>
+</table>

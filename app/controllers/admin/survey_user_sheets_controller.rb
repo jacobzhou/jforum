@@ -5,6 +5,7 @@ class Admin::SurveyUserSheetsController < Admin::BaseController
   end
 
   def audit
+    UserMailer.test(current_user).deliver
     sheet = SurveyUserSheet.find(params[:id])
     sheet.audit!(current_user)
     flash[:success] =  sheet.audit? ? "审核通过！" : "撤销成功！"

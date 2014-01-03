@@ -11,6 +11,7 @@
   <div class="cell">
     <%= render "survey_user" %>
     <%= simple_form_for [:admin, @survey_reply], :html => {:class => 'form-horizontal'} do |f| %>
+      <%= hidden_field_tag 'zc' %>
       <%= f.input :survey_user_id, :as => :hidden %>
       <%= f.input :user_id, :as => :hidden %>
       <%= f.input :title %>
@@ -20,13 +21,30 @@
       <%= f.input :point do %>
         <%= f.ueditor_text :point, :width => "90%" %>
       <% end %>
-      <%= f.input :meal, :input_html => {:style => "width:90%"}, :placeholder => "牛奶 120m", :hint => "每行一条数据，食物和用量之间逗号隔开：如'牛奶  120ml'" %>
+      <h1 class="tc bold">一日三餐膳食管理方案</h1>
+      <h3 class="tc bold">（一）正餐 推荐食物 </h3>
+      <h5 class="tc bold">正餐蛋白质类参考食物</h5>
+      <%= f.input :zc_zc, :as => :text, :input_html => {:style => "width:90%;height:80px"}, :placeholder => "牛奶 120m", :hint => "食物名称和用量之间-隔开，食物之间用空格隔开：如'牛奶 -120ml 鸡蛋-2个'" %>
+      <%= f.input :zc_zwc, :as => :text, :input_html => {:style => "width:90%;height:80px"}, :placeholder => "酱牛肉 55克", :hint => "同上" %>
+      <h5 class="tc bold">正餐碳水化合物类参考食物 </h5>
+      <%= f.input :zc_sg, :as => :text, :input_html => {:style => "width:90%;height:80px"}, :placeholder => "苹果 100克", :hint => "同上" %>
+      <%= f.input :zc_sc, :as => :text, :input_html => {:style => "width:90%;height:80px"}, :placeholder => "白萝卜 150克", :hint => "同上" %>
+      <%= f.input :zc_gw, :as => :text, :input_html => {:style => "width:90%;height:80px"}, :placeholder => "麦淀粉 100克", :hint => "同上" %>
+      <h3 class="tc bold">（二）加餐 推荐食物 </h3>
+      <%= f.input :jc, :as => :text, :input_html => {:style => "width:90%;height:80px"}, :placeholder => "无糖酸奶 100ml", :hint => "同上" %>
       <div class="form-actions">
-        <%= button_tag '预览', :class => 'btn btn-small btn-primary' %>
-        <%= f.submit '暂存', :class => 'btn btn-small btn-warning' %>
+        <%= f.submit '暂存并预览', :class => 'btn btn-small btn-warning', :id => "zc_submit" %>
         <%= f.submit '确定并发送邮件', :class => 'btn btn-small btn-primary' %>
       </div>
     <% end -%>
   </div>
 </div>
+
+<script type="text/javascript">
+  $(function(){
+    $("#zc_submit").submit(function(){
+      $("#zc").val("1");
+    });
+  })
+</script>
 

@@ -6,21 +6,25 @@
   </div>
   <div class="cell">
     <%= render "survey_user" %>
-    <h1 class="tc"><%= @survey_reply.title %></h1>
-    <h3>健康导语</h3>
+    <h1 class="tc bold"><%= @survey_reply.title %></h1>
+    <h2 class="tc bold">健康导语</h2>
     <div>
-      <%= @survey_reply.intro.html_safe %>
+      <%= @survey_reply.intro.to_s.html_safe %>
     </div>
-    <h3>实施要点</h3>
+    <h2 class="tc bold">实施要点</h2>
     <div>
-      <%= @survey_reply.point.html_safe %>
+      <%= @survey_reply.point.to_s.html_safe %>
     </div>
-    <h3>一日三餐</h3>
-    <div>
-      <%= @survey_reply.meal.html_safe %>
-    </div>
-
-    <div class="tc"><%= button_tag "将内容发送答复邮件到#{@user.email}", :class => 'btn btn-small btn-primary', :confirm => "您确定吗?" %></div>
+    <h2 class="tc bold">一日三餐膳食管理方案</h2>
+    <h3 class="tc bold">（一）正餐 推荐食物 </h3>
+    <h3 class="tc bold">1、正餐蛋白质类参考食物</h3>
+    <%= render 'food_table', :title => "早餐选择范围（下表均为半份，任选两个半份组成一份  ", :rs => @survey_reply.food_to_ary('zc_zc') %>
+    <%= render 'food_table', :title => "中、晚餐选择范围（可任选一份或两个半份组成一份）", :rs => @survey_reply.food_to_ary('zc_zwc') %>
+    <h3 class="tc bold">2、正餐碳水化合物类参考食物</h3>
+    <%= render 'food_table', :title => "1.水果类：(一份)", :rs => @survey_reply.food_to_ary('zc_sg') %>
+    <%= render 'food_table', :title => "2.蔬菜类： (一份)", :rs => @survey_reply.food_to_ary('zc_sc') %>
+    <%= render 'food_table', :title => "3.谷物类：（一份）", :rs => @survey_reply.food_to_ary('zc_gw') %>
+    <div class="tc"><%= button_tag "将内容发送答复邮件到#{@survey_reply.survey_user.email}", :class => 'btn btn-small btn-primary', :confirm => "您确定吗?" %></div>
   </div>
 </div>
 

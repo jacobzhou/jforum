@@ -8,4 +8,10 @@ class SurveyReply < ActiveRecord::Base
   def send?
     self.send_at.present?
   end
+
+  def food_to_ary(column_name)
+    self.send(column_name).split.map do |r, index|
+      [r.split("-")[0], r.split("-")[1]]
+    end
+  end
 end

@@ -17,16 +17,22 @@ class Admin::SurveyRepliesController < Admin::BaseController
   def create
     @survey_reply = SurveyReply.new(params[:survey_reply])
     flash_msg(:success) if @survey_reply.save
-    respond_with :admin, @survey_reply, :location => admin_survey_replies_path
+    if params[:zc]
+      redirect_to :action => :show, :id => @survey_reply
+    else
+      # 发邮件
+      respond_with :admin, @survey_reply, :location => admin_survey_replies_path
+    end
   end
 
   def edit
-    render :layout=>false
+    @survey_reply = SurveyReply.find(params[:id])
   end
 
   def update
+    @survey_reply = SurveyReply.find(params[:id])
     flash_msg(:success) if @survey_reply.update_attributes(params[:survey_reply])
-    respond_back(@survey_reply)
+    respond_with :admin, @survey_reply, :location => admin_survey_replies_path
   end
 
   def destroy
@@ -42,6 +48,5 @@ class Admin::SurveyRepliesController < Admin::BaseController
 
   def show
     @survey_reply = SurveyReply.find(params[:id])
-    @user = @survey_reply.user
   end
 end

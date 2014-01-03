@@ -29,6 +29,12 @@ zh:
         intro: '健康导语'
         point: '实施要点'
         meal: '一日三餐'
+        zc_zc: '早餐选择范围'
+        zc_zwc: '中、晚餐选择范围'
+        zc_gw: '谷物类'
+        zc_sg: '水果类'
+        zc_sc: '蔬菜类'
+        jc: '加餐 推荐食物'
     hints:
       defaults: 
         options: '单选多选选项用空格隔开（如：经常 偶尔 从不）; 其他不用填'

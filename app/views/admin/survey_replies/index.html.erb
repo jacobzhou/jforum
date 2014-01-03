@@ -23,6 +23,7 @@
           <td><%= survey_reply.send? ? label_tag_html("已答复", :title => "#{survey_reply.sender.nickname}于#{survey_reply.send_at}") : "待回复邮件" %></td>
           <td>
             <%= link_to "查看", admin_survey_reply_path(survey_reply) %>
+            <%= link_to "修改", edit_admin_survey_reply_path(survey_reply) %>
             <%= link_to "答复邮件" %>
           </td>
         </tr> 
