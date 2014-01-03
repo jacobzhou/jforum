@@ -19,7 +19,7 @@
       </thead>
       <% @users.each_with_index do |user, index| %>
         <tr>
-          <td><%= index_no(index, @users.size) %></td>
+          <td rowspan="<%= user.survey_user_sheets.size %>"><%= index_no(index, @users.size) %></td>
           <td rowspan="<%= user.survey_user_sheets.size %>"><%= user_profile_link(user, :class => :black) %>（<%= user.email %>）
             <br/>
             <%= link_to("营养师答复", new_admin_survey_reply_path(:survey_user_id => user.id))%>
