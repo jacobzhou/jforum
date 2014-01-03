@@ -12,7 +12,7 @@ class CreateSurveyReplies < ActiveRecord::Migration
       t.text :zc_sg, :limit => 4294967295
       t.text :zc_sc, :limit => 4294967295
       t.text :zc_gw, :limit => 4294967295
-      t.strign :jc
+      t.string :jc
       t.datetime :send_at
       t.integer :sender_id
       t.timestamps
