@@ -24,7 +24,9 @@
             <br/>
             <%= link_to("营养师答复", new_admin_survey_reply_path(:survey_user_id => user.id))%>
           </td>
+        </tr>
           <% user.survey_user_sheets.each do |sheet| %>
+          <tr>
             <td>
               <%= link_to_blank sheet.survey.name,edit_survey_user_sheet_path(sheet) %>
             </td>
@@ -33,8 +35,8 @@
             </td>
             <td><%= sheet.audit? ? link_to("撤销通过", audit_admin_survey_user_sheet_path(sheet), :method => "post", :confirm => "确定撤销通过#{user.nickname}的#{sheet.survey.name}答卷信息吗？") : link_to("审核通过", audit_admin_survey_user_sheet_path(sheet), :method => "post", :confirm => "确定通过#{user.nickname}的#{sheet.survey.name}答卷信息吗？") %>
             </td>
+            </tr> 
           <% end -%>
-        </tr> 
       <% end -%>
     </table>
     <div class="inner">
