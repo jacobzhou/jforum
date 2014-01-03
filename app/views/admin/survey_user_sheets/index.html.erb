@@ -22,7 +22,7 @@
           <td rowspan="<%= user.survey_user_sheets.size + 1 %>"><%= index_no(index, @users.size) %></td>
           <td rowspan="<%= user.survey_user_sheets.size + 1 %>"><%= user_profile_link(user, :class => :black) %>（<%= user.email %>）
             <br/>
-            <%= link_to("营养师答复", new_admin_survey_reply_path(:survey_user_id => user.id))%>
+            <%= link_to("营养师答复", new_admin_survey_reply_path(:survey_user_id => user.id), :class => "btn btn-primary")%>
           </td>
         </tr>
           <% user.survey_user_sheets.each do |sheet| %>
