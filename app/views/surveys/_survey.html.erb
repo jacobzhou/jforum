@@ -2,7 +2,7 @@
 <tr class="highlight">
   <td align="right"><%= survey.id %></td>
   <td class="auto" align="left"><%= survey.name %></td>
-  <td><%#= sheet.nil? ? "等待填写" : (sheet.audit? ? (sheet.in_period? ? "未到下次更新时间<p>离下个更新日期还有<%= sheet.next_days %>天</p>".html_safe : "等待更新") : "待审核") %></td>
+  <td><%= sheet.nil? ? "等待填写" : (sheet.audit? ? (sheet.in_period? ? "未到下次更新时间<p>离下个更新日期还有#{sheet.next_days}天</p>".html_safe : "等待更新") : "待审核") %></td>
   <td class="center">
     <% if sheet.nil? %>
       <%= link_to '填写', new_survey_user_sheet_path(:survey_id => survey.id), :class => 'btn btn-warning btn-small' %>
