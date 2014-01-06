@@ -14,8 +14,7 @@
           <%= link_to("修改", edit_survey_user_sheet_path(sheet), :class => 'btn btn-warning btn-small') %>
         <% end -%>
       <% else %>
-        <%= link_to '填写', new_survey_user_sheet_path(:survey_id => survey.id), :class => 'btn btn-warning btn-small' %>
-      <% end -%>
+      <%= link_to '填写', new_survey_user_sheet_path(:survey_id => survey.id), :class => 'btn btn-warning btn-small' %>
     <% end -%>
   </td>
 </tr>
